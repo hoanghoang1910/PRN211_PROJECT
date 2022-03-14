@@ -26,7 +26,6 @@ namespace PRN211_PROJECT
         {
             InitializeComponent();
             ProjectPRN211Context context = new ProjectPRN211Context();
-            ;
             MessageBox.Show(context.LoginInfos.Find(1).Username);
         }
     }
