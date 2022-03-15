@@ -1,5 +1,4 @@
-﻿using PRN211_PROJECT.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PRN211_PROJECT
+namespace PRN211_PROJECT.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProductViewPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductViewPage : Page
     {
-        
-        public MainWindow()
+        public ProductViewPage()
         {
             InitializeComponent();
-            ProjectPRN211Context context = new ProjectPRN211Context();
-            MessageBox.Show(context.LoginInfos.Find(1).Username);
         }
     }
 }
