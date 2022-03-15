@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace PRN211_PROJECT.Service
 {
-    class ProductService
+    class StoreStockService
     {
-        private static ProductService instance = null;
+        private static StoreStockService instance = null;
         private static readonly object instanceLock = new object();
         private ProjectPRN211Context context = new ProjectPRN211Context();
-        private ProductService() { }
-        public static ProductService Instance
+        private StoreStockService() { }
+        public static StoreStockService Instance
         {
             get
             {
@@ -21,7 +21,7 @@ namespace PRN211_PROJECT.Service
                 {
                     if (instance == null)
                     {
-                        instance = new ProductService();
+                        instance = new StoreStockService();
                     }
                     return instance;
                 }
