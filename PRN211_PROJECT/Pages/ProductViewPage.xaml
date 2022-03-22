@@ -6,11 +6,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductViewPage"
-      Background="White">
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="ProductViewPage">
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="43*"/>
@@ -50,7 +49,41 @@
                             Content="Orange" />
                     </ComboBox>
                 </Grid>
+                <Grid Grid.Column="2">
+                    <Button
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource MaterialDesignIconButton}"
+                        ToolTip="MaterialDesignIconButton"
+                        Foreground="White"
+                        Background="#C65D7B"
+                        >
+                        <materialDesign:PackIcon
+                            Kind="Magnify"
+                            Height="25"
+                            Width="25"/>
+                    </Button>
+                </Grid>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Margin="30"  >
+            <Border CornerRadius="15" BorderThickness="1" Background="White">
+                <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                            Header="Id"/>
+                            <GridViewColumn
+                            Header="Name" />
+                            <GridViewColumn
+                            Header="Price"/>
+                            <GridViewColumn
+                            Header="Category"/>
+                            <GridViewColumn
+                            Header="Sale"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
         </Grid>
     </Grid>
 </Page>

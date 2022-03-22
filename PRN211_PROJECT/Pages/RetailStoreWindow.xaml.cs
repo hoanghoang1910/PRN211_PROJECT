@@ -22,7 +22,22 @@ namespace PRN211_PROJECT.Pages
         public RetailStoreWindow()
         {
             InitializeComponent();
+            renderBody.Content = new RetailRequestViewPage();
+        }
+
+        private void product_btn_Click(object sender, RoutedEventArgs e)
+        {
             renderBody.Content = new ProductViewPage();
+        }
+
+        private void order_btn_Click(object sender, RoutedEventArgs e)
+        {
+            renderBody.Content = new OrderViewPage();   
+        }
+
+        private void requestRestock_btn_Click(object sender, RoutedEventArgs e)
+        {
+            renderBody.Content = new RetailRequestViewPage();
         }
     }
 }

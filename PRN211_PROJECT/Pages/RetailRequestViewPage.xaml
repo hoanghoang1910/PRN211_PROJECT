@@ -1,0 +1,152 @@
+﻿<Page x:Class="PRN211_PROJECT.Pages.RetailRequestViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="RetailRequestViewPage" Foreground="White">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="43*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="10">
+                    <TextBox
+                        materialDesign:HintAssist.Hint="Enter Product Id"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        MaxHeight="40"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        Background="#C65D7B" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon
+                            Kind="Magnify"
+                            Height="25"
+                            Width="25">
+                        </materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Margin="15 0">
+                <Border BorderThickness="1" CornerRadius="10" Background="White">
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=1}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Id"/>
+                                <GridViewColumn Header="Name"/>
+                                <GridViewColumn Header="Category"/>
+                                <!--<GridViewColumn Header="Option">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                                Height="25"
+                                                Style="{StaticResource MaterialDesignIconButton}">
+                                                <materialDesign:PackIcon Kind="Plus" Foreground="#C65D7B"></materialDesign:PackIcon>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>-->
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Border>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="11*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="15,15,15,15">
+                <Border BorderThickness="1" Background="#F68989" CornerRadius="10">
+                    <StackPanel>
+                        <TextBox
+                        materialDesign:HintAssist.Hint="Product Name"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Margin="10"
+                        IsEnabled="False"
+                        MaxHeight="40"/>
+                        <TextBox
+                        materialDesign:HintAssist.Hint="Product Category"
+                        IsEnabled="false"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Margin="10"
+                        MaxHeight="40"/>
+                        <TextBox
+                        materialDesign:HintAssist.Hint="Quantity"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Margin="10"
+                        MaxHeight="40"/>
+                        <!--<Button
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Width="162" 
+                            Margin="5 22"
+                            Background="#874356"
+                            BorderBrush="{x:Null}"
+                            Foreground="White"
+                            Content="Add to Request Box"/>-->
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <!--<Grid Grid.Row="1" Margin="10,10,10,10">
+                <TextBlock Text="Request Box" FontSize="18" FontFamily="Franklin Gothic Book" Margin="10 0"></TextBlock>
+                <Border BorderThickness="1" CornerRadius="10" Background="white" Margin="0 25 0 0">
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=1}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name"/>
+                                <GridViewColumn Header="Quantity"/>
+                                <GridViewColumn Header="Option">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                                Height="20"
+                                                Style="{StaticResource MaterialDesignIconButton}">
+                                                <materialDesign:PackIcon Kind="Minus" Foreground="#874356"></materialDesign:PackIcon>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Border>
+            </Grid>-->
+            <Grid Grid.Row="1" Margin="10,0,10,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                            Content="Cancel Request"
+                            BorderBrush="{x:Null}"
+                            Foreground="#F6E7D8"
+                            Background="#C65D7B"
+                            Margin="10 0"></Button>
+                    <Button Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                            Content="Confirm Request"
+                            BorderBrush="{x:Null}"
+                            Foreground="#F6E7D8"
+                            Background="#C65D7B"
+                            Margin="10 0"></Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
