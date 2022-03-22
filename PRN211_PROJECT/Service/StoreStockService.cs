@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN211_PROJECT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,52 @@ namespace PRN211_PROJECT.Service
                 }
             }
         }
+
+
+        public List<StoreStock> GetAllProductFromStock(int storeId)
+        {
+            return context.StoreStocks.Include(x => x.Product).Include(x => x.Store).Where(x => x.StoreId == storeId).ToList();
+        }
+
+        public List<StoreStock> GetAllProductFromStockWithSearch(int storeId, string productName)
+        {
+            return context.StoreStocks
+                .Include(x => x.Product)
+                .Include(x => x.Store)
+                .Where(x => x.StoreId == storeId)
+                .Where(x => x.Product.ProductName.Contains(productName))
+                .ToList();
+        }
+
+        public void CheckoutProductFromStock(int productId, int quantity)
+        {
+            var checkOutProduct = context.StoreStocks.Where(x => x.ProductId == productId).FirstOrDefault();
+            if (checkOutProduct != null)
+            {
+                checkOutProduct.Quantity -= quantity;
+                if (checkOutProduct.Quantity <= 0)
+                {
+                    context.StoreStocks.Remove(checkOutProduct);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public void CheckInProductFromStock(int productId, int quantity, int storeId)
+        {
+            var checkInProduct = context.StoreStocks.Where(x => x.ProductId == productId).FirstOrDefault();
+            if (checkInProduct != null)
+            {
+                checkInProduct.Quantity += quantity;
+            }
+            else if (checkInProduct == null)
+            {
+                context.StoreStocks.Add(new StoreStock() { ProductId = productId, StoreId = storeId, Quantity = quantity });
+                context.SaveChanges();
+            }
+
+        }
+
+
     }
 }

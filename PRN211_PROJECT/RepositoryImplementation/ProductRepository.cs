@@ -1,4 +1,6 @@
-﻿using PRN211_PROJECT.Repository;
+﻿using PRN211_PROJECT.Models;
+using PRN211_PROJECT.Repository;
+using PRN211_PROJECT.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace PRN211_PROJECT.RepositoryImplementation
 {
-    class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
     {
+        public List<Product> GetAllProducts() => ProductService.Instance.GetAllProducts();
+
+
     }
 }

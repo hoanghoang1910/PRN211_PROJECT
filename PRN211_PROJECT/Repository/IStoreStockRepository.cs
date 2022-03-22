@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRN211_PROJECT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace PRN211_PROJECT.Repository
 {
-    interface IStoreStockRepository
+    public interface IStoreStockRepository
     {
+
+        public List<StoreStock> GetAllProductFromStock(int storeId);
+        public List<StoreStock> GetAllProductFromStockWithSearch(int storeId, string productName);
+        public void CheckoutProductFromStock(int productId, int quantity);
+        public void CheckInProductFromStock(int productId, int quantity, int storeId);
     }
 }

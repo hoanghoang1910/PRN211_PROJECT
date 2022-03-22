@@ -9,6 +9,9 @@
         Title="RetailStoreWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}"
         AllowsTransparency="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20"></WindowChrome>
+    </WindowChrome.WindowChrome>
     <Grid>
         <materialDesign:Card Margin="5" UniformCornerRadius="10">
             <Grid>
@@ -23,13 +26,13 @@
                     </Style>
                 </Grid.Resources>
                 <Grid Grid.Column="0">
-                    <ListView Margin="0 15">
+                    <ListView Margin="0 15" Background="#F6E7D8" >
                         <ListViewItem HorizontalAlignment="Center" Margin="0">
                             <Button Name="product_btn" Style="{StaticResource MaterialDesignFloatingActionButton}"
                                     HorizontalAlignment="Left"
                                     BorderBrush="{x:Null}"
                                     Background="{x:Null}"
-                                    Foreground="Black">
+                                    Foreground="Black" Click="product_btn_Click">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Store"></materialDesign:PackIcon>
                                 </StackPanel>
@@ -40,7 +43,7 @@
                                     HorizontalAlignment="Left"
                                     BorderBrush="{x:Null}"
                                     Background="{x:Null}"
-                                    Foreground="Black">
+                                    Foreground="Black" Click="order_btn_Click">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Cart"></materialDesign:PackIcon>
                                 </StackPanel>
@@ -51,7 +54,7 @@
                                     HorizontalAlignment="Left"
                                     BorderBrush="{x:Null}"
                                     Background="{x:Null}"
-                                    Foreground="Black">
+                                    Foreground="Black" Click="requestRestock_btn_Click">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="TruckAddOutline"></materialDesign:PackIcon>
                                 </StackPanel>
@@ -71,7 +74,15 @@
                     </ListView>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Frame NavigationUIVisibility="Hidden" x:Name="renderBody" Background="#F6F5F8" Margin="3"></Frame>
+                    <Frame NavigationUIVisibility="Hidden" x:Name="renderBody" Margin="3">
+                        <Frame.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White"/>
+                                <GradientStop Color="#FFF19A9A" Offset="1"/>
+                                <GradientStop Color="#FFF1BEBE" Offset="0.587"/>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                    </Frame>
                 </Grid>
             </Grid>
         </materialDesign:Card>

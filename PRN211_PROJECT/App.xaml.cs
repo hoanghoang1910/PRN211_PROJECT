@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PRN211_PROJECT.Pages;
+using PRN211_PROJECT.Repository;
+using PRN211_PROJECT.RepositoryImplementation;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +17,25 @@ namespace PRN211_PROJECT
     /// </summary>
     public partial class App : Application
     {
+        private ServiceProvider serviceProvider;
+
+        public App()
+        {
+            ServiceCollection services = new ServiceCollection();
+            ConfigureServices(services);
+            serviceProvider = services.BuildServiceProvider();
+        }
+
+        private void ConfigureServices(ServiceCollection services)
+        {
+            services.AddSingleton(typeof(IProductRepository), typeof(ProductRepository));
+            services.AddSingleton<OrderModifyWindow>();
+        }
+
+        private void OnStartUp(object sender, StartupEventArgs e)
+        {
+            var StartUpWindow = serviceProvider.GetService<OrderModifyWindow>();
+            StartUpWindow?.Show();
+        }
     }
 }

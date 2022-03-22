@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN211_PROJECT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace PRN211_PROJECT.Service
     {
         private static ProductService instance = null;
         private static readonly object instanceLock = new object();
-        private ProjectPRN211Context context = new ProjectPRN211Context();
+        private readonly ProjectPRN211Context _context = new ProjectPRN211Context();
         private ProductService() { }
         public static ProductService Instance
         {
@@ -27,5 +28,13 @@ namespace PRN211_PROJECT.Service
                 }
             }
         }
+
+
+        public List<Product> GetAllProducts()
+        {
+            return _context.Products.Include(s => s.Category).ToList();
+        }
+
+        
     }
 }
