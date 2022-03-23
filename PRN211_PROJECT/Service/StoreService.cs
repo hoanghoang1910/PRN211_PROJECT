@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN211_PROJECT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,32 @@ namespace PRN211_PROJECT.Service
                     return instance;
                 }
             }
+        }
+
+        public Store GetStore(int storeId)
+        {
+            return context.Stores.Include(x => x.Sales)
+                .Include(x => x.Requests)
+                .Include(x => x.Notifications)
+                .Where(x => x.StoreId == storeId).FirstOrDefault();
+        }
+
+        public void UpdateInforStore(Store store)
+        {
+            context.Stores.Update(store);
+            context.SaveChanges();
+        }
+
+        public void AddRetailStore(Store store)
+        {
+            context.Stores.Add(store);
+            context.SaveChanges();
+        }
+
+        public void DeleteRetailStore(Store store)
+        {
+            context.Stores.Remove(store);
+            context.SaveChanges();
         }
     }
 }
