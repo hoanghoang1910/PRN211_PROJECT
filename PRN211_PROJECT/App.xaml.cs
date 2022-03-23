@@ -28,14 +28,25 @@ namespace PRN211_PROJECT
 
         private void ConfigureServices(ServiceCollection services)
         {
+            //Repo
             services.AddSingleton(typeof(IProductRepository), typeof(ProductRepository));
+            services.AddSingleton(typeof(ISaleDetailRepository), typeof(SaleDetailRepository));
+            services.AddSingleton(typeof(ISaleRepository), typeof(SaleRepository));
+            services.AddSingleton(typeof(IStoreRepository), typeof(StoreRepository));
+            services.AddSingleton(typeof(IStoreStockRepository), typeof(StoreStockRepository));
+            // Pages
             services.AddSingleton<OrderModifyWindow>();
             services.AddSingleton<AdminWindow>();
+            services.AddSingleton<OrderDetailViewWindow>();
+            services.AddSingleton<RetailStoreWindow>();
+            services.AddSingleton<RetailRequestViewPage>();
+            services.AddSingleton<ProductViewPage>();
+            services.AddSingleton<OrderViewPage>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            var StartUpWindow = serviceProvider.GetService<AdminWindow>();
+            var StartUpWindow = serviceProvider.GetService<OrderDetailViewWindow>();
             StartUpWindow?.Show();
         }
     }
