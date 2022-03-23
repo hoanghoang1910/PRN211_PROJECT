@@ -30,11 +30,12 @@ namespace PRN211_PROJECT
         {
             services.AddSingleton(typeof(IProductRepository), typeof(ProductRepository));
             services.AddSingleton<OrderModifyWindow>();
+            services.AddSingleton<AdminWindow>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            var StartUpWindow = serviceProvider.GetService<OrderModifyWindow>();
+            var StartUpWindow = serviceProvider.GetService<AdminWindow>();
             StartUpWindow?.Show();
         }
     }

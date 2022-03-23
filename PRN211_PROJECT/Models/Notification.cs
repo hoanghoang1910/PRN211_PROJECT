@@ -11,6 +11,7 @@ namespace PRN211_PROJECT.Models
         public string NotificationMessage { get; set; }
         public int NotiType { get; set; }
         public int? NotiFrom { get; set; }
+        public DateTime? NotiDate { get; set; }
 
         public virtual Store NotiFromNavigation { get; set; }
         public virtual NotifyType NotiTypeNavigation { get; set; }

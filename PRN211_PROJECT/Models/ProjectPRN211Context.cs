@@ -32,17 +32,10 @@ namespace PRN211_PROJECT.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            try
+            if (!optionsBuilder.IsConfigured)
             {
-                if (!optionsBuilder.IsConfigured)
-                {
-                    var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
-                    optionsBuilder.UseSqlServer(config.GetConnectionString("PRN221-Hoang"));
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
+                var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+                optionsBuilder.UseSqlServer(config.GetConnectionString("PRN221-Hoang"));
             }
         }
 
@@ -97,7 +90,7 @@ namespace PRN211_PROJECT.Models
             {
                 entity.ToTable("Notification");
 
-                entity.Property(e => e.NotificationId).ValueGeneratedNever();
+                entity.Property(e => e.NotiDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.NotiFromNavigation)
                     .WithMany(p => p.Notifications)
@@ -143,7 +136,7 @@ namespace PRN211_PROJECT.Models
 
             modelBuilder.Entity<Request>(entity =>
             {
-                entity.Property(e => e.RequestId).ValueGeneratedNever();
+                entity.Property(e => e.DateCreated).HasColumnType("date");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Requests)
