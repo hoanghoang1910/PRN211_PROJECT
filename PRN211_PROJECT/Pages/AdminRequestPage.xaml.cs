@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PRN211_PROJECT.Models;
+using PRN211_PROJECT.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +22,18 @@ namespace PRN211_PROJECT.Pages
     /// </summary>
     public partial class AdminRequest : Page
     {
-        public AdminRequest()
+
+        IRequestRepository requestRepository;
+
+        public AdminRequest(IRequestRepository requestRepository)
         {
             InitializeComponent();
-            NewRequestCard.Visibility = Visibility.Visible;
-            NewRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 167, 179, 234));
-            OldRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 48, 63, 133));
-            OldRequestCard.Visibility = Visibility.Hidden;
+            this.requestRepository = requestRepository;
         }
 
         private void NewRequestBtn_Click(object sender, RoutedEventArgs e)
         {
+            LoadNewRequest();
             NewRequestCard.Visibility = Visibility.Visible;
             NewRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 167, 179, 234));
             OldRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 48, 63, 133));
@@ -39,10 +42,54 @@ namespace PRN211_PROJECT.Pages
 
         private void OldRequestBtn_Click(object sender, RoutedEventArgs e)
         {
+            LoadOldRequest();
             NewRequestCard.Visibility = Visibility.Hidden;
             OldRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 167, 179, 234));
             NewRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 48, 63, 133));
             OldRequestCard.Visibility = Visibility.Visible;
+        }
+
+        private void LoadNewRequest()
+        {
+            NewRequestLv.ItemsSource = requestRepository.GetRequestsRemaining();
+        }
+
+        private void LoadOldRequest()
+        {
+            OldRequestLv.ItemsSource = requestRepository.GetRequestHandled();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadNewRequest();
+            NewRequestCard.Visibility = Visibility.Visible;
+            NewRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 167, 179, 234));
+            OldRequestBtn.Background = new SolidColorBrush(Color.FromArgb(100, 48, 63, 133));
+            OldRequestCard.Visibility = Visibility.Hidden;
+        }
+
+        private void Accept_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var curItem = ((ListViewItem)NewRequestLv.ContainerFromElement((Button)sender));
+            Request request = curItem.DataContext as Request;
+            if (requestRepository.AcceptRequest(request))
+            {
+                MessageBox.Show($"Request id {request.RequestId} approved");
+                LoadNewRequest();
+            }
+            else
+            {
+                MessageBox.Show("Product quantity in stock is not enough");
+            }
+        }
+
+        private void Deny_dtn_Click(object sender, RoutedEventArgs e)
+        {
+            var curItem = ((ListViewItem)NewRequestLv.ContainerFromElement((Button)sender));
+            Request request = curItem.DataContext as Request;
+            requestRepository.DenyRequest(request);
+            MessageBox.Show($"Request id {request.RequestId} denied");
+            LoadNewRequest();
         }
     }
 }

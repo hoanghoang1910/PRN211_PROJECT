@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRN211_PROJECT.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,12 @@ namespace PRN211_PROJECT.Pages
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow()
+        IRequestRepository requestRepository;
+        public AdminWindow(IRequestRepository requestRepository)
         {
             InitializeComponent();
             renderBody.Content = new AdminDashboardPage();
+            this.requestRepository = requestRepository;
         }
 
         private void resetSelection()
@@ -52,7 +55,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             RequestBtn.Style = st;
-            renderBody.Content = new AdminRequest();
+            renderBody.Content = new AdminRequest(requestRepository);
         }
 
         private void StockBtn_Click(object sender, RoutedEventArgs e)

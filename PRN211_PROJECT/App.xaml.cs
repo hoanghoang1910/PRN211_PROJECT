@@ -34,6 +34,7 @@ namespace PRN211_PROJECT
             services.AddSingleton(typeof(ISaleRepository), typeof(SaleRepository));
             services.AddSingleton(typeof(IStoreRepository), typeof(StoreRepository));
             services.AddSingleton(typeof(IStoreStockRepository), typeof(StoreStockRepository));
+            services.AddSingleton(typeof(IRequestRepository), typeof(RequestRepository));
             // Pages
             services.AddSingleton<OrderModifyWindow>();
             services.AddSingleton<AdminWindow>();
@@ -42,11 +43,12 @@ namespace PRN211_PROJECT
             services.AddSingleton<RetailRequestViewPage>();
             services.AddSingleton<ProductViewPage>();
             services.AddSingleton<OrderViewPage>();
+            services.AddSingleton<AdminRequest>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            var StartUpWindow = serviceProvider.GetService<OrderDetailViewWindow>();
+            var StartUpWindow = serviceProvider.GetService<AdminWindow>();
             StartUpWindow?.Show();
         }
     }

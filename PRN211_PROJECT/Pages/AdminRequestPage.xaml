@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminRequest"
+      Title="AdminRequest" Loaded="Page_Loaded"
       >
 
     <Grid>
@@ -16,33 +16,33 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,3">
-            <materialDesign:Card x:Name="NewRequestCard" Visibility="Hidden" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
-                <ListView 
+            <materialDesign:Card x:Name="NewRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
+                <ListView x:Name="NewRequestLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
                     <ListView.View >
                         <GridView>
                             <GridViewColumn 
-        DisplayMemberBinding="{Binding Code}"
+        DisplayMemberBinding="{Binding RequestId}"
         Header="Id" Width="100"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Name}"
-        Header="Store" Width="150"/>
+        DisplayMemberBinding="{Binding Store.StoreName}"
+        Header="Store" Width="200"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Description}"
+        DisplayMemberBinding="{Binding Product.ProductName}"
         Header="Product" Width="150"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Description}"
+        DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
 
                             <GridViewColumn Header="Approve" Width="130">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="20 0 0 0" x:Name="add_item_btn"
+                                        <Button Margin="20 0 0 0" x:Name="Accept_btn"
                                                         Height="20"
                                                         Width="20"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
-                                                        BorderBrush="{x:Null}" 
+                                                        BorderBrush="{x:Null}" Click="Accept_btn_Click" 
                                                         >
                                             <materialDesign:PackIcon Kind="CheckBold" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
                                         </Button>
@@ -56,12 +56,12 @@
                             <GridViewColumn Header="Deny" Width="100">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="20 0 0 0" x:Name="add_item_btn"
+                                        <Button Margin="20 0 0 0" x:Name="Deny_btn"
                                                         Height="20"
                                                         Width="20"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
-                                                        BorderBrush="{x:Null}" 
+                                                        BorderBrush="{x:Null}" Click="Deny_dtn_Click" 
                                                         >
                                             <materialDesign:PackIcon Kind="Denied" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
                                         </Button>
@@ -73,25 +73,25 @@
                 </ListView>
 
             </materialDesign:Card>
-            <materialDesign:Card x:Name="OldRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
-                <ListView 
+            <materialDesign:Card x:Name="OldRequestCard" Visibility="Hidden" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
+                <ListView x:Name="OldRequestLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
                     <ListView.View >
                         <GridView>
                             <GridViewColumn 
-        DisplayMemberBinding="{Binding Code}"
-        Header="Id" Width="100"/>
+        DisplayMemberBinding="{Binding RequestId}"
+        Header="Id" Width="130"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Name}"
-        Header="Store" Width="150"/>
+        DisplayMemberBinding="{Binding Store.StoreName}"
+        Header="Store" Width="230"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Description}"
-        Header="Product" Width="150"/>
+        DisplayMemberBinding="{Binding Product.ProductName}"
+        Header="Product" Width="230"/>
                             <GridViewColumn
-        DisplayMemberBinding="{Binding Description}"
+        DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
 
-                            <GridViewColumn Header="Status" Width="130">
+                            <GridViewColumn Header="Status" DisplayMemberBinding="{Binding StatusString}" Width="150">
                              
                             </GridViewColumn>
 
