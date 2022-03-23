@@ -74,19 +74,7 @@
                                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}"/>
                                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
                                     <GridViewColumn Header="Option">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button x:Name="add_item_btn"
-                                                        Height="20"
-                                                        Width="20"
-                                                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                                        Background="{x:Null}"
-                                                        BorderBrush="{x:Null}" Click="add_item_btn_Click"
-                                                        >
-                                                    <materialDesign:PackIcon Kind="Plus" Foreground="#C65D7B" Width="20" Height="20"></materialDesign:PackIcon>
-                                                </Button>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
+                                
                                     </GridViewColumn>
                                 </GridView>
                             </ListView.View>

@@ -12,7 +12,8 @@ namespace PRN211_PROJECT.Models
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public string Message { get; set; }
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
+        public DateTime? DateCreated { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual Store Store { get; set; }

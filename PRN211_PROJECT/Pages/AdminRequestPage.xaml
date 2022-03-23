@@ -1,0 +1,107 @@
+﻿<Page x:Class="PRN211_PROJECT.Pages.AdminRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminRequest"
+      >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,3">
+            <materialDesign:Card x:Name="NewRequestCard" Visibility="Hidden" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
+                <ListView 
+  d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn 
+        DisplayMemberBinding="{Binding Code}"
+        Header="Id" Width="100"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Name}"
+        Header="Store" Width="150"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Description}"
+        Header="Product" Width="150"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Description}"
+        Header="Quantity" Width="150"/>
+
+                            <GridViewColumn Header="Approve" Width="130">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="20 0 0 0" x:Name="add_item_btn"
+                                                        Height="20"
+                                                        Width="20"
+                                                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                                        Background="{x:Null}"
+                                                        BorderBrush="{x:Null}" 
+                                                        >
+                                            <materialDesign:PackIcon Kind="CheckBold" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
+                                        </Button>
+
+                                    </DataTemplate>
+
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Deny" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="20 0 0 0" x:Name="add_item_btn"
+                                                        Height="20"
+                                                        Width="20"
+                                                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                                        Background="{x:Null}"
+                                                        BorderBrush="{x:Null}" 
+                                                        >
+                                            <materialDesign:PackIcon Kind="Denied" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="OldRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
+                <ListView 
+  d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn 
+        DisplayMemberBinding="{Binding Code}"
+        Header="Id" Width="100"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Name}"
+        Header="Store" Width="150"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Description}"
+        Header="Product" Width="150"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Description}"
+        Header="Quantity" Width="150"/>
+
+                            <GridViewColumn Header="Status" Width="130">
+                             
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </materialDesign:Card>
+            <Button x:Name="NewRequestBtn" Content="New Requests" HorizontalAlignment="Left" Margin="375,0,0,35" VerticalAlignment="Bottom" Background="#FFA7B3EA" Click="NewRequestBtn_Click"/>
+            <Button x:Name="OldRequestBtn" Content="Old Requets" Margin="514,0,0,35" VerticalAlignment="Bottom" Background="#FF303F85" HorizontalAlignment="Left" Width="132" Click="OldRequestBtn_Click"/>
+        </Grid>
+    </Grid>
+</Page>
