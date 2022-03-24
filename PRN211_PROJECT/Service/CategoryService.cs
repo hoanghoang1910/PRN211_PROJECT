@@ -27,5 +27,10 @@ namespace PRN211_PROJECT.Service
                 }
             }
         }
+
+        public List<Category> GetAllCategoy()
+        {
+            return context.Categories.ToList();
+        }
     }
 }
