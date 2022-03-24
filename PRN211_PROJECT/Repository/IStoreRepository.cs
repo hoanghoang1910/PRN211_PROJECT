@@ -12,5 +12,6 @@ namespace PRN211_PROJECT.Repository
         public Store GetStore(int storeId);
         public void UpdateInforStore(Store store);
         public void AddRetailStore(Store store);
+        public List<Store> GetAllStore();
     }
 }

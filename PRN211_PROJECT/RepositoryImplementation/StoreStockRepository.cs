@@ -15,5 +15,20 @@ namespace PRN211_PROJECT.RepositoryImplementation
         public List<StoreStock> GetAllProductFromStockWithSearch(int storeId, string productName) => StoreStockService.Instance.GetAllProductFromStockWithSearch(storeId, productName);
         public void CheckoutProductFromStock(int productId, int quantity) => StoreStockService.Instance.CheckoutProductFromStock(productId, quantity);
         public void CheckInProductFromStock(int productId, int quantity, int storeId) => StoreStockService.Instance.CheckInProductFromStock(productId, quantity, storeId);
+
+        public List<StoreStock> GetAllStoreStock()
+        {
+            return StoreStockService.Instance.GetAllStoreStock();
+        }
+
+        public List<StoreStock> GetProductFromStockByCategory(int categoryId)
+        {
+            return StoreStockService.Instance.GetProductFromStockByCategory(categoryId);
+        }
+
+        public List<StoreStock> GetProductFromStockByCategoryAndStore(int categoryId, int storeId)
+        {
+            return StoreStockService.Instance.GetProductFromStockByCategoryAndStore(categoryId, storeId);
+        }
     }
 }

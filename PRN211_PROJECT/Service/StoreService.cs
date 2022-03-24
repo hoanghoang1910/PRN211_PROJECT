@@ -29,6 +29,11 @@ namespace PRN211_PROJECT.Service
             }
         }
 
+        public List<Store> GetAllStore()
+        {
+            return context.Stores.ToList();
+        }
+
         public Store GetStore(int storeId)
         {
             return context.Stores.Include(x => x.Sales)

@@ -29,6 +29,36 @@ namespace PRN211_PROJECT.Service
             }
         }
 
+        public List<StoreStock> GetAllStoreStock()
+        {
+            return context.StoreStocks
+                .Include(x => x.Product)
+                .Include(x => x.Store)
+                .Include(x => x.Product.Category)
+                .ToList();
+        }
+
+        public List<StoreStock> GetProductFromStockByCategory(int categoryId)
+        {
+            return context.StoreStocks
+                .Include(x => x.Product)
+                .Include(x => x.Product.Category)
+                .Include(x => x.Store)
+                .Where(x => x.Product.CategoryId == categoryId)
+                .ToList();
+        }
+
+        public List<StoreStock> GetProductFromStockByCategoryAndStore(int categoryId, int storeId)
+        {
+            return context.StoreStocks
+                .Include(x => x.Product)
+                .Include(x => x.Product.Category)
+                .Include(x => x.Store)
+                .Where(x => x.Product.CategoryId == categoryId)
+                .Where(x => x.StoreId == storeId)
+                .ToList();
+        }
+
 
         public List<StoreStock> GetAllProductFromStock(int storeId)
         {

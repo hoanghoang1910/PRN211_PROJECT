@@ -16,5 +16,10 @@ namespace PRN211_PROJECT.RepositoryImplementation
         public void AddRetailStore(Store store) => StoreService.Instance.AddRetailStore(store);
 
         public void UpdateInforStore(Store store) => StoreService.Instance.UpdateInforStore(store);
+
+        public List<Store> GetAllStore()
+        {
+           return StoreService.Instance.GetAllStore();
+        }
     }
 }
