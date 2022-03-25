@@ -151,14 +151,14 @@
 
         <!--Top Menu-->
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 20">
-            <Button Content="Today" Style="{StaticResource topMenuButton}"/>
-            <Button Content="Week" Style="{StaticResource topMenuButton}" Background="#5B60C4" Foreground="#ffffff"/>
-            <Button Content="Month" Style="{StaticResource topMenuButton}"/>
-            <Button Content="Year" Style="{StaticResource topMenuButton}"/>
+            <Button x:Name="TodayBtn" Content="Today" Style="{StaticResource topMenuButton}" Foreground="#ffffff" Click="TodayBtn_Click"/>
+            <Button x:Name="ThisWeekBtn" Content="Week" Style="{StaticResource topMenuButton}" Background="#5B60C4" Foreground="#ffffff" Click="ThisWeekBtn_Click"/>
+            <Button x:Name="ThisMonthBtn" Content="Month" Style="{StaticResource topMenuButton}" Foreground="#ffffff" Click="ThisMonthBtn_Click"/>
+            <Button x:Name="ThisYearBtn" Content="Year" Style="{StaticResource topMenuButton}" Foreground="#ffffff" Click="ThisYearBtn_Click"/>
         </StackPanel>
 
         <!--Title-->
-        <TextBlock FontSize="26" Foreground="#CCD7FF" Margin="50 35 0 20" Text="Good Afternoon, Perman" HorizontalAlignment="Left"/>
+        <TextBlock FontSize="26" Foreground="#CCD7FF" Margin="50 35 0 20" Text="Hello Admin" HorizontalAlignment="Left"/>
 
         <!--Info Cards-->
         <Grid Grid.Row="1" Margin="50 20 15 40">
@@ -168,9 +168,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <uc:InfoCard Grid.Column="0" Title="Total Views" Number="654,947" Icon="Eye" Background1="#827BFF" Background2="#D9B5FF" EllipseBackground1="#B298FD" EllipseBackground2="#E4BBFF"/>
-            <uc:InfoCard Grid.Column="1" Title="Total Orders" Number="192,320" Icon="ShoppingCart" Background1="#FD8A87" Background2="#F3AB92" EllipseBackground1="#FBD5A8" EllipseBackground2="#FDB89B"/>
-            <uc:InfoCard Grid.Column="2" Title="Total Revenue" Number="$14,528" Icon="Coins" Background1="#FC84CB" Background2="#FC8FAE" EllipseBackground1="#FC8FAE" EllipseBackground2="#FFABE6"/>
+            <uc:InfoCard x:Name="RequestCard" Grid.Column="0" Title="Total Request" Number="654,947" Icon="Eye" Background1="#827BFF" Background2="#D9B5FF" EllipseBackground1="#B298FD" EllipseBackground2="#E4BBFF"/>
+            <uc:InfoCard x:Name="OrdersCard" Grid.Column="1" Title="Total Orders" Number="192,320" Icon="ShoppingCart" Background1="#FD8A87" Background2="#F3AB92" EllipseBackground1="#FBD5A8" EllipseBackground2="#FDB89B"/>
+            <uc:InfoCard x:Name="IncomeCard" Grid.Column="2" Title="Total Revenue" Number="đ 14,528" Icon="Coins" Background1="#FC84CB" Background2="#FC8FAE" EllipseBackground1="#FC8FAE" EllipseBackground2="#FFABE6"/>
         </Grid>
 
         <!--Chart Section-->

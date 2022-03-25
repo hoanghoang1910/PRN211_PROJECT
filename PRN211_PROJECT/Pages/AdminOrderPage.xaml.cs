@@ -46,8 +46,11 @@ namespace PRN211_PROJECT.Pages
 
         private void OrderLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Sale sale = (Sale)OrderLv.SelectedItem;
-            SaleDetailsLv.ItemsSource = saleDetailRepository.SaleDetailListBySaleId(sale.SaleId);
+            if (OrderLv.SelectedItem != null)
+            {
+                Sale sale = (Sale)OrderLv.SelectedItem;
+                SaleDetailsLv.ItemsSource = saleDetailRepository.SaleDetailListBySaleId(sale.SaleId);
+            }
         }
 
         private void Search()
@@ -64,6 +67,10 @@ namespace PRN211_PROJECT.Pages
                 if (storeId != 0)
                 {
                     OrderLv.ItemsSource = saleRepository.GetSalesByStoreId(storeId);
+                }
+                else
+                {
+                    OrderLv.ItemsSource = saleRepository.GetAllSale();
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace PRN211_PROJECT.Models
         public int Quantity { get; set; }
         public string Message { get; set; }
         public bool? Status { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         public string StatusString { get
             {
