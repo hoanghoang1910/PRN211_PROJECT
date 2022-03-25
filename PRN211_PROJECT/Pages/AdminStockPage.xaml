@@ -10,13 +10,13 @@
       >
 
     <Grid>
-        <Grid x:Name="AdminStockGrid" Visibility="Hidden">
+        <Grid x:Name="AdminStockGrid" Visibility="Hidden" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="31*" ></RowDefinition>
                 <RowDefinition Height="44*" ></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1">
-                <materialDesign:Card x:Name="NewRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" >
+            <Grid Grid.Row="1" Margin="10">
+                <materialDesign:Card x:Name="NewRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="5" Padding="3" >
                     <ListView x:Name="AdminStockLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" >
                         <ListView.View >
@@ -81,9 +81,11 @@
                 Text="{Binding Product.Sale}" materialDesign:TextFieldAssist.UnderlineBrush="#FFD37575"  materialDesign:HintAssist.Hint="Sale (%)" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 VerticalAlignment="Center" Margin="18,0,18,0" />
                 </Grid>
-                <Grid Grid.Row="4" Grid.Column="0">
-                    <Button x:Name="UpdateBtn" Content="Update" Margin="0,7,118,10" Background="#FF9D72F9" Click="UpdateBtn_Click"/>
-                    <Button x:Name="AddBtn" Content="Add" Margin="172,7,-54,8" Background="#FF9472F0" Click="AddBtn_Click"/>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Button x:Name="UpdateBtn" Width="80" Margin="0 0 10 0" Content="Update" Background="#FF9D72F9" Click="UpdateBtn_Click"/>
+                        <Button x:Name="AddBtn" Width="80" Content="Add" Margin="0 0 10 0" Background="#FF9472F0" Click="AddBtn_Click"/>
+                    </StackPanel>
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="2">
                     <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
@@ -112,13 +114,13 @@
         </Grid>
 
 
-        <Grid x:Name="StoreStockGrid" Visibility="Visible">
+        <Grid x:Name="StoreStockGrid" Visibility="Visible" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="31*" ></RowDefinition>
                 <RowDefinition Height="44*" ></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1">
-                <materialDesign:Card  Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" >
+            <Grid Grid.Row="1" Margin="10">
+                <materialDesign:Card  Visibility="Visible" Background="#8390c9"  UniformCornerRadius="5" Padding="3" >
                     <ListView x:Name="StoreStockLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" >
                         <ListView.View >

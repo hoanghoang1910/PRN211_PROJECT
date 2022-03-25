@@ -28,7 +28,7 @@ namespace PRN211_PROJECT.Service
             }
         }
 
-        public List<Category> GetAllCategoy()
+        public List<Category> GetCategories()
         {
             return context.Categories.ToList();
         }

@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
-      Title="ProductViewPage">
+      Title="ProductViewPage" Loaded="Page_Loaded">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -25,13 +25,15 @@
 
                 <Grid Grid.Column="0">
                     <TextBox
+                        Name="searchBox_tb"
                         materialDesign:HintAssist.Hint="Product Name"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Margin="10 10"
+                        Margin="30 10 10 10"
                         MaxHeight="40"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <ComboBox
+                        x:Name="category_cb"
                         materialDesign:HintAssist.Hint="Category"
                         materialDesign:HintAssist.HintOpacity=".26"
                         IsEditable="True"
@@ -39,23 +41,16 @@
                         Margin="10 10"
                         HorizontalAlignment="Left"
                         MaxHeight="40">
-                        <ComboBoxItem
-                            Content="Apple" />
-                        <ComboBoxItem
-                            Content="Banana" />
-                        <ComboBoxItem
-                            Content="Pear" />
-                        <ComboBoxItem
-                            Content="Orange" />
                     </ComboBox>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Button
+                        x:Name="search_btn"
                         HorizontalAlignment="Left"
                         Style="{StaticResource MaterialDesignIconButton}"
                         ToolTip="MaterialDesignIconButton"
                         Foreground="White"
-                        Background="#C65D7B"
+                        Background="#C65D7B" Click="search_btn_Click"
                         >
                         <materialDesign:PackIcon
                             Kind="Magnify"
@@ -66,24 +61,24 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="30"  >
-            <Border CornerRadius="15" BorderThickness="1" Background="White">
-                <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+            <materialDesign:Card UniformCornerRadius="5" Padding="10">
+                <ListView Name="product_lv" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                            Header="Id"/>
+                            Header="Id" DisplayMemberBinding="{Binding Product.ProductId}"/>
                             <GridViewColumn
-                            Header="Name" />
+                            Header="Name" DisplayMemberBinding="{Binding Product.ProductName}"/>
                             <GridViewColumn
-                            Header="Price"/>
+                            Header="Price" DisplayMemberBinding="{Binding Product.Price}"/>
                             <GridViewColumn
-                            Header="Category"/>
+                            Header="Category" DisplayMemberBinding="{Binding Product.Category.CategoryName}"/>
                             <GridViewColumn
-                            Header="Sale"/>
+                            Header="Sale" DisplayMemberBinding="{Binding Product.Sale}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </Border>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </Page>

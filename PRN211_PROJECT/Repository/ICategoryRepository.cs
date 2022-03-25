@@ -9,6 +9,6 @@ namespace PRN211_PROJECT.Repository
 {
     public interface ICategoryRepository
     {
-        List<Category> GetCategories();
+        public List<Category> GetCategories();
     }
 }

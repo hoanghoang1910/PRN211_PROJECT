@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
-      Title="OrderViewPage">
+      Title="OrderViewPage" Loaded="Page_Loaded">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -20,21 +20,37 @@
                     <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <TextBox
+                    <!--<TextBox
                         materialDesign:HintAssist.Hint="Order"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         Margin="10 10"
                         MaxWidth="500"
-                        MaxHeight="40"/>
+                        MaxHeight="40"/>-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0 0 0">
+                        <DatePicker
+                            Name="start_dp"
+                            materialDesign:HintAssist.Hint="Pick Start Date"
+                            Width="250"
+                            Margin="0 0 20 0"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <DatePicker
+                            Name="end_dp"
+                            materialDesign:HintAssist.Hint="Pick End Date"
+                            Width="250"
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    </StackPanel>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Button
+                        Name="search_btn"
                         Margin="20 0"
                         HorizontalAlignment="Left"
                         Style="{StaticResource MaterialDesignIconButton}"
                         ToolTip="MaterialDesignIconButton"
                         Foreground="White"
-                        Background="#C65D7B"
+                        Background="#C65D7B" Click="search_btn_Click"
                         >
                         <materialDesign:PackIcon
                             Kind="Magnify"
@@ -45,7 +61,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="15">
-            <Border Margin="10" CornerRadius="15" BorderThickness="1" Background="White">
+            <materialDesign:Card UniformCornerRadius="5" Padding="3">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="24*"/>
@@ -53,13 +69,30 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <ListView d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView Name="sale_lv" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Sale Id" />
                                     <GridViewColumn Header="Total Bill" />
                                     <GridViewColumn Header="Date" />
                                     <GridViewColumn Header="Sale Coupon" />
+                                    <GridViewColumn Header="Detail">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="70">
+                                                    <Button x:Name="view_item_btn"
+                                                        Height="20"
+                                                        Width="20"
+                                                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                                        Background="{x:Null}"
+                                                        BorderBrush="{x:Null}"
+                                                        >
+                                                        <materialDesign:PackIcon Kind="Eye" Foreground="#C65D7B" Width="20" Height="20"></materialDesign:PackIcon>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -71,15 +104,14 @@
                             Background="{x:Null}"
                             Margin="0 8">
                             <StackPanel>
-                                <Button Name="saleAdd_btn" Content="Add"></Button>
-                                <Button Name="saleDelete_btn" Content="Delete"></Button>
-                                <Button Name="saleEdit_btn" Content="Edit"></Button>
+                                <Button Name="saleAdd_btn" Content="Add" Click="saleAdd_btn_Click"></Button>
+                                <Button Name="saleDelete_btn" Content="Delete" Click="saleDelete_btn_Click"></Button>
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </Grid>
 
                 </Grid>
-            </Border>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN211_PROJECT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,16 @@ namespace PRN211_PROJECT.Service
                     return instance;
                 }
             }
+        }
+
+        public List<Sale> GetSalesByStoreId(int storeId)
+        {
+            return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).ToList();
+        }
+
+        public List<Sale> GetSalesByStoreIdWithDate(int storeId, DateTime start, DateTime end)
+        {
+            return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
         }
     }
 }
