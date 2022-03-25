@@ -23,6 +23,40 @@ namespace PRN211_PROJECT.Pages
         public AdminDashboardPage()
         {
             InitializeComponent();
+            ResetBtn();
+            TodayBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));           
+        }
+
+        private void ResetBtn()
+        {
+            TodayBtn.Background = null;
+            ThisMonthBtn.Background = null;
+            ThisWeekBtn.Background = null;
+            ThisYearBtn.Background = null;
+        }
+
+        private void TodayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ResetBtn();
+            TodayBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));
+        }
+
+        private void ThisWeekBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ResetBtn();
+            ThisWeekBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));
+        }
+
+        private void ThisMonthBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ResetBtn();
+            ThisMonthBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));
+        }
+
+        private void ThisYearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ResetBtn();
+            ThisYearBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));
         }
     }
 }

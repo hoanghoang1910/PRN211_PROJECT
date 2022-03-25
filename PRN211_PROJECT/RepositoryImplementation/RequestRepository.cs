@@ -26,6 +26,26 @@ namespace PRN211_PROJECT.RepositoryImplementation
             RequestService.Instance.DenyRequest(request);
         }
 
+        public int GetNumberOfRequestsThisMonth()
+        {
+            return RequestService.Instance.GetNumberOfRequestsThisMonth();
+        }
+
+        public int GetNumberOfRequestsThisWeek()
+        {
+            return RequestService.Instance.GetNumberOfRequestsThisWeek();
+        }
+
+        public int GetNumberOfRequestsThisYear()
+        {
+            return RequestService.Instance.GetNumberOfRequestsThisYear();
+        }
+
+        public int GetNumberOfRequestsToday()
+        {
+            return RequestService.Instance.GetNumberOfRequestsToday();
+        }
+
         public List<Request> GetRequestHandled()
         {
             return RequestService.Instance.GetRequestHandled();
