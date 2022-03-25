@@ -74,6 +74,7 @@
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Product.ProductName}"/>
                                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Product.Category.CategoryName}"/>
                                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Product.Price}"/>
+                                    <GridViewColumn Header="In Stock" DisplayMemberBinding="{Binding Quantity}"/>
                                     <GridViewColumn Header="Option">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>

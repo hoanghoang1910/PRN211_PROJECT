@@ -29,6 +29,18 @@ namespace PRN211_PROJECT.Service
             }
         }
 
+        public void AddSale(Sale sale)
+        {
+            context.Sales.Add(sale);
+            context.SaveChanges();
+        }
+
+        public void Delete(Sale sale)
+        {
+            context.Sales.Remove(sale);
+            context.SaveChanges();
+        }
+
         public List<Sale> GetAllSale()
         {
             return context.Sales.Include(x => x.Store).ToList();
