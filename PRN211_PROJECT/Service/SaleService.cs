@@ -29,6 +29,11 @@ namespace PRN211_PROJECT.Service
             }
         }
 
+        public List<Sale> GetAllSale()
+        {
+            return context.Sales.Include(x => x.Store).ToList();
+        }
+
         public List<Sale> GetSalesByStoreId(int storeId)
         {
             return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).ToList();
@@ -36,7 +41,14 @@ namespace PRN211_PROJECT.Service
 
         public List<Sale> GetSalesByStoreIdWithDate(int storeId, DateTime start, DateTime end)
         {
-            return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
+            if (storeId != 0)
+            {
+                return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
+            }
+            else
+            {
+                return context.Sales.Include(x => x.Store).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
+            }
         }
     }
 }

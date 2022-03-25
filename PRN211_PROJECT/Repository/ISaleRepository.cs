@@ -9,6 +9,7 @@ namespace PRN211_PROJECT.Repository
 {
     public interface ISaleRepository
     {
+        public List<Sale> GetAllSale();
         public List<Sale> GetSalesByStoreId(int storeId);
         public List<Sale> GetSalesByStoreIdWithDate(int storeId, DateTime start, DateTime end);
     }

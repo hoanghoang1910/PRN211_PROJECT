@@ -1,0 +1,115 @@
+﻿<Page x:Class="PRN211_PROJECT.Pages.AdminOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminOrderPage" Loaded="Page_Loaded">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*"></RowDefinition>
+            <RowDefinition Height="177*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+            <RowDefinition Height="200*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Sale Details" FontSize="20" Foreground="White" FontWeight="Bold"></Label>
+            </StackPanel>
+            <Grid Grid.Column="1">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="Filter" FontSize="20" Foreground="White" FontWeight="Bold"></Label>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="449*"></ColumnDefinition>
+                <ColumnDefinition Width="331*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5,5,5,5">
+                <materialDesign:Card  Visibility="Visible" Background="#8390c9"  UniformCornerRadius="10" Padding="5" >
+                    <ListView x:Name="SaleDetailsLv" 
+  d:ItemsSource="{d:SampleData ItemCount=2}" >
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn 
+        DisplayMemberBinding="{Binding Product.ProductName}"
+        Header="Product" Width="150"/>
+                                <GridViewColumn
+        DisplayMemberBinding="{Binding Product.Price}"
+        Header="Price" Width="150"/>
+                                <GridViewColumn
+        DisplayMemberBinding="{Binding Product.Sale}"
+        Header="Sale(%)" Width="150"/>
+                                <GridViewColumn
+        DisplayMemberBinding="{Binding Quantity}"
+        Header="Quantity" Width="150"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
+                    <DatePicker x:Name="DateFromPicker" FontWeight="Bold" Foreground="#FFF7BDBD" Width="300" materialDesign:HintAssist.Hint="Date From" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Background="#FFF7BDBD" SelectedDateChanged="DateFromPicker_SelectedDateChanged" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
+                    <DatePicker x:Name="DateToPicker" FontWeight="Bold" Foreground="#FFF7BDBD" Width="300" materialDesign:HintAssist.Hint="Date To" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Background="#FFFBBBBB" SelectedDateChanged="DateToPicker_SelectedDateChanged" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
+                    <ComboBox  FontWeight="Bold" Foreground="#FFF7BDBD" x:Name="StoreCb" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Store" Width="300" SelectionChanged="StoreCb_SelectionChanged">
+                    </ComboBox>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Orders" FontSize="20" Foreground="White" FontWeight="Bold"></Label>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Margin="10">
+            <materialDesign:Card  Visibility="Visible" Background="#8390c9"  UniformCornerRadius="10" Padding="5" >
+                <ListView x:Name="OrderLv" 
+  d:ItemsSource="{d:SampleData ItemCount=2}" SelectionChanged="OrderLv_SelectionChanged" >
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn 
+        DisplayMemberBinding="{Binding Store.StoreName}"
+        Header="Store Name" Width="150"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding SaleDate}"
+        Header="Sale Date" Width="250"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding Bill}"
+        Header="Total Bill" Width="200"/>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding SaleCoupon}"
+        Header="Sale Coupon" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Page>
