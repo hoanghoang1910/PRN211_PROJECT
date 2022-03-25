@@ -48,6 +48,7 @@ namespace PRN211_PROJECT
             services.AddSingleton<OrderViewPage>();
             services.AddSingleton<AdminRequest>();
             services.AddSingleton<AdminStockPage>();
+            services.AddSingleton<AdminOrderPage>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)

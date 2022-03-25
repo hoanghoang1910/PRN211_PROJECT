@@ -25,8 +25,11 @@ namespace PRN211_PROJECT.Pages
         IAdminStockRepository adminStockRepository;
         IStoreRepository storeRepository;
         IStoreStockRepository storeStockRepository;
+        ISaleRepository saleRepository;
+        ISaleDetailRepository saleDetailRepository;
         public AdminWindow(IRequestRepository requestRepository, ICategoryRepository categoryRepository,
-            IAdminStockRepository adminStockRepository, IStoreStockRepository storeStockRepository, IStoreRepository storeRepository)
+            IAdminStockRepository adminStockRepository, IStoreStockRepository storeStockRepository,
+            IStoreRepository storeRepository, ISaleRepository saleRepository, ISaleDetailRepository saleDetailRepository)
         {
             InitializeComponent();
             renderBody.Content = new AdminDashboardPage();
@@ -35,6 +38,8 @@ namespace PRN211_PROJECT.Pages
             this.categoryRepository = categoryRepository;
             this.storeRepository = storeRepository;
             this.storeStockRepository = storeStockRepository;
+            this.saleDetailRepository = saleDetailRepository;
+            this.saleRepository = saleRepository;
         }
 
         private void resetSelection()
@@ -81,6 +86,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             OrderBtn.Style = st;
+            renderBody.Content = new AdminOrderPage(saleRepository, saleDetailRepository, storeRepository);
         }
 
         private void StatisticsBtn_Click(object sender, RoutedEventArgs e)
