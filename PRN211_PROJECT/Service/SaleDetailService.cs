@@ -45,5 +45,11 @@ namespace PRN211_PROJECT.Service
             context.SaleDetails.Remove(saleDetail);
             context.SaveChanges();
         }
+
+        public void DeleteSales(int saleId)
+        {
+            context.SaleDetails.RemoveRange(context.SaleDetails.Where(x => x.SaleId == saleId));
+            context.SaveChanges();
+        }
     }
 }

@@ -15,13 +15,14 @@
         <Grid VerticalAlignment="Top" Background="White">
             <StackPanel WindowChrome.IsHitTestVisibleInChrome="true" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button
+                    Name="window_close_button"
                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                     Width="20"
                     Height="20"
                     Margin="5"
                     Foreground="White"
                     Background="#874356"
-                    BorderBrush="{x:Null}">
+                    BorderBrush="{x:Null}" Click="window_close_button_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
@@ -69,10 +70,10 @@
                         <ListView Name="product_lb" d:ItemsSource="{d:SampleData ItemCount=1}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ProductId}"/>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ProductName}"/>
-                                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}"/>
-                                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Product.ProductId}"/>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Product.ProductName}"/>
+                                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Product.Category.CategoryName}"/>
+                                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Product.Price}"/>
                                     <GridViewColumn Header="Option">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -107,14 +108,19 @@
                         <materialDesign:Card UniformCornerRadius="10" Background="#F68989" Padding="10">
                             <StackPanel>
                                 <TextBox
+                                    Name="product_name_tb"
                                     materialDesign:HintAssist.Hint="Product Name"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                                 <TextBox
+                                    Name="product_des_tb"
                                     materialDesign:HintAssist.Hint="Product Description"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    MaxHeight="40"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Stretch"
+                                    MinWidth="280"
+                                    Height="80"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                             </StackPanel>
                         </materialDesign:Card>
@@ -124,8 +130,8 @@
                             <ListView x:Name="Cart_lv" d:ItemsSource="{d:SampleData ItemCount=1}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Product Name"/>
-                                        <GridViewColumn Header="Quantity"/>
+                                        <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding Product.ProductName}"/>
+                                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
                                         <GridViewColumn Header="Option">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
@@ -136,7 +142,7 @@
                                                         Margin="5 0"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
-                                                        BorderBrush="{x:Null}"
+                                                        BorderBrush="{x:Null}" Click="plus_quantity_btn_Click"
                                                         >
                                                             <materialDesign:PackIcon Kind="Plus" Foreground="#C65D7B" Width="20" Height="20"></materialDesign:PackIcon>
                                                         </Button>
@@ -146,7 +152,7 @@
                                                         Margin="5 0"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
-                                                        BorderBrush="{x:Null}"
+                                                        BorderBrush="{x:Null}" Click="minus_quantity_btn_Click"
                                                         >
                                                             <materialDesign:PackIcon Kind="Minus" Foreground="#C65D7B" Width="20" Height="20"></materialDesign:PackIcon>
                                                         </Button>
@@ -169,11 +175,13 @@
                             <Grid Grid.Row="0">
                                 <StackPanel>
                                     <TextBox
+                                        Name="coupon_tb"
                                     materialDesign:HintAssist.Hint="Apply Coupon"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                                     <TextBlock
+                                        Name="total_price_tb"
                                         Margin="0 15"
                                     Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                     Text="Total Price :" />
@@ -182,16 +190,18 @@
                             <Grid Grid.Row="1">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button
+                                        Name="remove_btn"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}" Content="Remove Cart"
                                 Foreground="White"
                                 Background="#C65D7B"
-                                BorderBrush="{x:Null}"></Button>
+                                BorderBrush="{x:Null}" Click="remove_btn_Click"></Button>
                                     <Button
+                                        Name="confirm_btn"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}" Content="Confirm Order"
                                 Foreground="White"
                                 Background="#C65D7B"
                                 Margin="10 0 0 0"
-                                BorderBrush="{x:Null}"></Button>
+                                BorderBrush="{x:Null}" Click="confirm_btn_Click"></Button>
                                 </StackPanel>
                             </Grid>
                         </Grid>

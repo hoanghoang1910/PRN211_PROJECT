@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
         mc:Ignorable="d"
         Title="OrderDetailViewWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="#F6E7D8">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="#F6E7D8" Loaded="Window_Loaded">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20"></WindowChrome>
     </WindowChrome.WindowChrome>
@@ -15,13 +15,14 @@
         <Grid VerticalAlignment="Top" Background="White">
             <StackPanel WindowChrome.IsHitTestVisibleInChrome="true" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <Button
+                    Name="close_btn"
                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                     Width="20"
                     Height="20"
                     Margin="5"
                     Foreground="White"
                     Background="#874356"
-                    BorderBrush="{x:Null}">
+                    BorderBrush="{x:Null}" Click="close_btn_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
@@ -36,22 +37,37 @@
                 <materialDesign:Card UniformCornerRadius="5" Padding="10">
                     <StackPanel>
                         <TextBox
-                                    materialDesign:HintAssist.Hint="Product Name"
+                            Name="id_tb"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Sale Id"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                         <TextBox
-                                    materialDesign:HintAssist.Hint="Product Description"
+                            Name="date_tb"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Date Created"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                         <TextBox
-                                    materialDesign:HintAssist.Hint="Product Description"
+                            x:Name="bill_tb"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Total Bill (Not include Coupon)"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
                         <TextBox
-                                    materialDesign:HintAssist.Hint="Product Description"
+                            Name="coupon_tb"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Coupon"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    MaxHeight="40"
+                                    CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
+                        <TextBox
+                            Name="realbill_tb"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Total Bill"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     MaxHeight="40"
                                     CaretBrush="{x:Null}" SelectionBrush="#FFDA7C46"/>
@@ -60,11 +76,11 @@
             </Grid>
             <Grid Grid.Column="1" Margin="10">
                 <materialDesign:Card UniformCornerRadius="5" Padding="10">
-                    <ListView d:ItemsSource="{d:SampleData ItemCount=1}">
+                    <ListView x:Name="sale_lv" d:ItemsSource="{d:SampleData ItemCount=1}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Product"/>
-                                <GridViewColumn Header="Quantity"/>
+                                <GridViewColumn Header="Product" DisplayMemberBinding="{Binding Product.ProductName}"/>
+                                <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

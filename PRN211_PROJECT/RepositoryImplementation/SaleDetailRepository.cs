@@ -14,5 +14,6 @@ namespace PRN211_PROJECT.RepositoryImplementation
         public List<SaleDetail> SaleDetailListBySaleId(int saleId) => SaleDetailService.Instance.SaleDetailListBySaleId(saleId);
         public void AddSaleDetail(SaleDetail saleDetail) => SaleDetailService.Instance.AddSaleDetail(saleDetail);
         public void DeleteSaleDetail(SaleDetail saleDetail) => SaleDetailService.Instance.DeleteSaleDetail(saleDetail);
+        public void DeleteSales(int saleId) => SaleDetailService.Instance.DeleteSales(saleId);
     }
 }

@@ -24,15 +24,21 @@ namespace PRN211_PROJECT.Pages
     {
         ISaleRepository _saleRepository;
         IProductRepository _productRepository;
+        ISaleDetailRepository _saleDetailRepository;
+        IStoreStockRepository _stockRepository;
 
         List<Sale> sales;
         private int _storeid;
 
-        public OrderViewPage(int storeid, ISaleRepository saleRepository, IProductRepository productRepository)
+        public OrderViewPage(int storeid, ISaleRepository saleRepository, IProductRepository productRepository, ISaleDetailRepository saleDetailRepository, IStoreStockRepository stockRepository)
         {
             _storeid = storeid;
             _saleRepository = saleRepository;
             _productRepository = productRepository;
+            _saleDetailRepository = saleDetailRepository;
+            _stockRepository = stockRepository;
+
+
             InitializeComponent();
         }
 
@@ -63,12 +69,29 @@ namespace PRN211_PROJECT.Pages
 
         private void saleAdd_btn_Click(object sender, RoutedEventArgs e)
         {
-            OrderModifyWindow window = new OrderModifyWindow(_productRepository);
+            OrderModifyWindow window = new OrderModifyWindow(_productRepository, _saleDetailRepository, _saleRepository, _storeid, _stockRepository);
             window.ShowDialog();
+            ListBinding();
         }
 
         private void saleDelete_btn_Click(object sender, RoutedEventArgs e)
         {
+            var item = sale_lv.SelectedItem as Sale;
+            _saleDetailRepository.DeleteSales(item.SaleId);
+            _saleRepository.Delete(item);
+            ListBinding();
+
+        }
+
+        private void view_item_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var curItem = ((ListViewItem)sale_lv.ContainerFromElement((Button)sender));
+            var selected = curItem.DataContext as Sale;
+            if (selected != null)
+            {
+                OrderDetailViewWindow window = new OrderDetailViewWindow(selected.SaleId, _saleDetailRepository);
+                window.ShowDialog();
+            }
         }
     }
 }

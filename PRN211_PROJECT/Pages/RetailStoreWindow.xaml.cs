@@ -26,6 +26,7 @@ namespace PRN211_PROJECT.Pages
         IRequestRepository _requestRepo;
         ICategoryRepository _categoryRepo;
         IProductRepository _productRepo;
+        ISaleDetailRepository _saleDetailRepo;
 
         private int _storeId = 1;
 
@@ -34,7 +35,8 @@ namespace PRN211_PROJECT.Pages
             , IStoreRepository storeRepository
             , IRequestRepository requestRepository
             , ICategoryRepository categoryRepository
-            , IProductRepository productRepository)
+            , IProductRepository productRepository
+, ISaleDetailRepository saleDetailRepo)
         {
             InitializeComponent();
             _storeStockRepo = storeStockRepository;
@@ -43,6 +45,7 @@ namespace PRN211_PROJECT.Pages
             _requestRepo = requestRepository;
             _categoryRepo = categoryRepository;
             _productRepo = productRepository;
+            _saleDetailRepo = saleDetailRepo;
             renderBody.Content = new ProductViewPage(_storeId, _storeStockRepo, _categoryRepo);
         }
 
@@ -53,7 +56,7 @@ namespace PRN211_PROJECT.Pages
 
         private void order_btn_Click(object sender, RoutedEventArgs e)
         {
-            renderBody.Content = new OrderViewPage(_storeId, _saleRepo,_productRepo);
+            renderBody.Content = new OrderViewPage(_storeId, _saleRepo,_productRepo,_saleDetailRepo,_storeStockRepo);
         }
 
         private void requestRestock_btn_Click(object sender, RoutedEventArgs e)
