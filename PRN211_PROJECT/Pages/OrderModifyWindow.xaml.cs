@@ -73,7 +73,7 @@ namespace PRN211_PROJECT.Pages
             var curItem = ((ListViewItem)product_lb.ContainerFromElement((Button)sender));
             var selected = curItem.DataContext as StoreStock;
             //MessageBox.Show($"Selected index = {selected.ProductName}");
-
+            
             if (selected != null)
             {
                 var cartItem = _cartItems.FirstOrDefault(x => x.Product.ProductId == selected.ProductId);

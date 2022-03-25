@@ -76,6 +76,7 @@
                                     <GridViewColumn Header="Total Bill" DisplayMemberBinding="{Binding Bill}" />
                                     <GridViewColumn Header="Date" DisplayMemberBinding="{Binding SaleDate,StringFormat=dd/MM/yyyy HH:mm tt}" />
                                     <GridViewColumn Header="Sale Coupon" DisplayMemberBinding="{Binding SaleCoupon}" />
+                                    
                                     <GridViewColumn Header="Detail">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
