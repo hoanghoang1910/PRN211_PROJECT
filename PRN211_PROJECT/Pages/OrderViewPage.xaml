@@ -72,10 +72,10 @@
                         <ListView Name="sale_lv" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Sale Id" />
-                                    <GridViewColumn Header="Total Bill" />
-                                    <GridViewColumn Header="Date" />
-                                    <GridViewColumn Header="Sale Coupon" />
+                                    <GridViewColumn Header="Sale Id" DisplayMemberBinding="{Binding SaleId}"/>
+                                    <GridViewColumn Header="Total Bill" DisplayMemberBinding="{Binding Bill}" />
+                                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding SaleDate,StringFormat=dd/MM/yyyy HH:mm tt}" />
+                                    <GridViewColumn Header="Sale Coupon" DisplayMemberBinding="{Binding SaleCoupon}" />
                                     <GridViewColumn Header="Detail">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
@@ -85,9 +85,9 @@
                                                         Width="20"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
-                                                        BorderBrush="{x:Null}"
+                                                        BorderBrush="{x:Null}" Click="view_item_btn_Click"
                                                         >
-                                                        <materialDesign:PackIcon Kind="Eye" Foreground="#C65D7B" Width="20" Height="20"></materialDesign:PackIcon>
+                                                        <materialDesign:PackIcon Kind="Eye" Foreground="#C65D7B" Width="17" Height="17"></materialDesign:PackIcon>
                                                     </Button>
                                                 </StackPanel>
                                             </DataTemplate>

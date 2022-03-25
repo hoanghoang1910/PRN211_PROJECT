@@ -12,5 +12,6 @@ namespace PRN211_PROJECT.Repository
         public List<SaleDetail> SaleDetailListBySaleId(int saleId);
         public void AddSaleDetail(SaleDetail saleDetail);
         public void DeleteSaleDetail(SaleDetail saleDetail);
+        public void DeleteSales(int saleId);
     }
 }

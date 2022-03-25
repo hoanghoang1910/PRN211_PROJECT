@@ -99,12 +99,13 @@ namespace PRN211_PROJECT.Service
                .ToList();
         }
 
-        public void CheckoutProductFromStock(int productId, int quantity)
+        public void CheckoutProductFromStock(int productId, int quantity,int storeId)
         {
-            var checkOutProduct = context.StoreStocks.Where(x => x.ProductId == productId).FirstOrDefault();
+            var checkOutProduct = context.StoreStocks.Where(x => x.StoreId == storeId).Where(x => x.ProductId == productId).FirstOrDefault();
             if (checkOutProduct != null)
             {
                 checkOutProduct.Quantity -= quantity;
+                context.SaveChanges();
                 if (checkOutProduct.Quantity <= 0)
                 {
                     context.StoreStocks.Remove(checkOutProduct);
@@ -115,10 +116,11 @@ namespace PRN211_PROJECT.Service
 
         public void CheckInProductFromStock(int productId, int quantity, int storeId)
         {
-            var checkInProduct = context.StoreStocks.Where(x => x.ProductId == productId).FirstOrDefault();
+            var checkInProduct = context.StoreStocks.Where(x => x.StoreId == storeId).Where(x => x.ProductId == productId).FirstOrDefault();
             if (checkInProduct != null)
             {
                 checkInProduct.Quantity += quantity;
+                context.SaveChanges();
             }
             else if (checkInProduct == null)
             {

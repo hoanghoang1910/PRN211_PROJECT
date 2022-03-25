@@ -43,11 +43,11 @@ namespace PRN211_PROJECT.Service
         {
             if (storeId != 0)
             {
-                return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
+                return context.Sales.Include(x => x.Store).Where(x => x.StoreId == storeId).Where(x => x.SaleDate >= start && x.SaleDate < end.AddDays(1)).ToList();
             }
             else
             {
-                return context.Sales.Include(x => x.Store).Where(x => x.SaleDate >= start && x.SaleDate <= end).ToList();
+                return context.Sales.Include(x => x.Store).Where(x => x.SaleDate >= start && x.SaleDate < end.AddDays(1)).ToList();
             }
         }
     }
