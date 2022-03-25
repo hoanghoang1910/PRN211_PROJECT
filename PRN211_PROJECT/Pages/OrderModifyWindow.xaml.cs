@@ -80,7 +80,7 @@ namespace PRN211_PROJECT.Pages
 
                 if (cartItem == null)
                 {
-                    cartItem = new CartItem() { Product = selected.Product, Quantity = 1, TotalPrice = (float)selected.Product.Price };
+                    cartItem = new CartItem() { Product = selected.Product, Quantity = 1, TotalPrice = (float)selected.Product.Price, InStock = selected.Quantity };
                     _cartItems.Add(cartItem);
                 }
                 else
@@ -101,6 +101,11 @@ namespace PRN211_PROJECT.Pages
             var selected = curItem?.DataContext as CartItem;
             if (selected != null)
             {
+                if (selected.Quantity >= selected.InStock)
+                {
+                    MessageBox.Show("Cant add more than Stock");
+                    return;
+                }
                 selected.Quantity++;
                 selected.TotalPrice = (float)selected.Product.Price * selected.Quantity;
                 Cart_lv.Items.Refresh();
