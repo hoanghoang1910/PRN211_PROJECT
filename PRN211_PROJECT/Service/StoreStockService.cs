@@ -62,7 +62,7 @@ namespace PRN211_PROJECT.Service
 
         public List<StoreStock> GetAllProductFromStock(int storeId)
         {
-            return context.StoreStocks.Include(x => x.Product).Include(x => x.Store).Where(x => x.StoreId == storeId).ToList();
+            return context.StoreStocks.Include(x => x.Product).Include(x => x.Product.Category).Include(x => x.Store).Where(x => x.StoreId == storeId).ToList();
         }
 
         public List<StoreStock> GetAllProductFromStockWithSearch(int storeId, string productName)
@@ -70,9 +70,33 @@ namespace PRN211_PROJECT.Service
             return context.StoreStocks
                 .Include(x => x.Product)
                 .Include(x => x.Store)
+                .Include(x => x.Product.Category)
                 .Where(x => x.StoreId == storeId)
                 .Where(x => x.Product.ProductName.Contains(productName))
                 .ToList();
+        }
+
+        public List<StoreStock> GetAllProductFromStockWithCategory(int storeId, int categoryId)
+        {
+            return context.StoreStocks
+                .Include(x => x.Product)
+                .Include(x => x.Store)
+                .Include(x => x.Product.Category)
+                .Where(x => x.StoreId == storeId)
+                .Where(x => x.Product.Category.CategoryId == categoryId)
+                .ToList();
+        }
+
+        public List<StoreStock> GetAllProductFromStockWithCategoryAndName(int storeId, string productName, int categoryId)
+        {
+            return context.StoreStocks
+               .Include(x => x.Product)
+               .Include(x => x.Store)
+               .Include(x => x.Product.Category)
+               .Where(x => x.StoreId == storeId)
+               .Where(x => x.Product.ProductName.Contains(productName))
+               .Where(x => x.Product.Category.CategoryId == categoryId)
+               .ToList();
         }
 
         public void CheckoutProductFromStock(int productId, int quantity)

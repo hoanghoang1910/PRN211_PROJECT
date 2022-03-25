@@ -11,9 +11,6 @@ namespace PRN211_PROJECT.RepositoryImplementation
 {
     class CategoryRepository : ICategoryRepository
     {
-        public List<Category> GetCategories()
-        {
-            return CategoryService.Instance.GetAllCategoy();
-        }
+        public List<Category> GetCategories() => CategoryService.Instance.GetCategories();
     }
 }

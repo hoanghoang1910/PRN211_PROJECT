@@ -10,98 +10,110 @@
       Title="AdminRequest" Loaded="Page_Loaded"
       >
 
-    <Grid>
+    <Grid Margin="9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,3">
-            <materialDesign:Card x:Name="NewRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
-                <ListView x:Name="NewRequestLv" 
+        <Grid Grid.Column="0" Grid.Row="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <materialDesign:Card x:Name="NewRequestCard" Visibility="Visible" Background="#8390c9"  UniformCornerRadius="5" Padding="5">
+                    <ListView x:Name="NewRequestLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
-                    <ListView.View >
-                        <GridView>
-                            <GridViewColumn 
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn 
         DisplayMemberBinding="{Binding RequestId}"
         Header="Id" Width="100"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Store.StoreName}"
         Header="Store" Width="200"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Product.ProductName}"
         Header="Product" Width="150"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
 
-                            <GridViewColumn Header="Approve" Width="130">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Margin="20 0 0 0" x:Name="Accept_btn"
+                                <GridViewColumn Header="Approve" Width="130">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="20 0 0 0" x:Name="Accept_btn"
                                                         Height="20"
                                                         Width="20"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
                                                         BorderBrush="{x:Null}" Click="Accept_btn_Click" 
                                                         >
-                                            <materialDesign:PackIcon Kind="CheckBold" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
-                                        </Button>
+                                                <materialDesign:PackIcon Kind="CheckBold" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
+                                            </Button>
 
-                                    </DataTemplate>
+                                        </DataTemplate>
 
-                                </GridViewColumn.CellTemplate>
+                                    </GridViewColumn.CellTemplate>
 
-                            </GridViewColumn>
+                                </GridViewColumn>
 
-                            <GridViewColumn Header="Deny" Width="100">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Margin="20 0 0 0" x:Name="Deny_btn"
+                                <GridViewColumn Header="Deny" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="20 0 0 0" x:Name="Deny_btn"
                                                         Height="20"
                                                         Width="20"
                                                         Style="{StaticResource MaterialDesignFloatingActionButton}"
                                                         Background="{x:Null}"
                                                         BorderBrush="{x:Null}" Click="Deny_dtn_Click" 
                                                         >
-                                            <materialDesign:PackIcon Kind="Denied" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
-                                        </Button>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                                                <materialDesign:PackIcon Kind="Denied" Foreground="#ac4eba" Width="20" Height="20"></materialDesign:PackIcon>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-            </materialDesign:Card>
-            <materialDesign:Card x:Name="OldRequestCard" Visibility="Hidden" Background="#8390c9"  UniformCornerRadius="30" Padding="3" Margin="10,10,10,145">
-                <ListView x:Name="OldRequestLv" 
+                </materialDesign:Card>
+                <materialDesign:Card x:Name="OldRequestCard" Visibility="Hidden" Background="#8390c9"  UniformCornerRadius="5" Padding="5" >
+                    <ListView x:Name="OldRequestLv" 
   d:ItemsSource="{d:SampleData ItemCount=2}" Margin="0,0,-6,-30">
-                    <ListView.View >
-                        <GridView>
-                            <GridViewColumn 
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn 
         DisplayMemberBinding="{Binding RequestId}"
         Header="Id" Width="130"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Store.StoreName}"
         Header="Store" Width="230"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Product.ProductName}"
         Header="Product" Width="230"/>
-                            <GridViewColumn
+                                <GridViewColumn
         DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
 
-                            <GridViewColumn Header="Status" DisplayMemberBinding="{Binding StatusString}" Width="150">
-                             
-                            </GridViewColumn>
+                                <GridViewColumn Header="Status" DisplayMemberBinding="{Binding StatusString}" Width="150">
 
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                                </GridViewColumn>
 
-            </materialDesign:Card>
-            <Button x:Name="NewRequestBtn" Content="New Requests" HorizontalAlignment="Left" Margin="375,0,0,35" VerticalAlignment="Bottom" Background="#FFA7B3EA" Click="NewRequestBtn_Click"/>
-            <Button x:Name="OldRequestBtn" Content="Old Requets" Margin="514,0,0,35" VerticalAlignment="Bottom" Background="#FF303F85" HorizontalAlignment="Left" Width="132" Click="OldRequestBtn_Click"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button x:Name="NewRequestBtn" Content="New Request" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Background="#FFA7B3EA" Click="NewRequestBtn_Click" Height="32" Margin="0 0 20 0"/>
+                    <Button x:Name="OldRequestBtn" Content="Old Requests"  VerticalAlignment="Bottom" Background="#FF303F85" HorizontalAlignment="Left" Width="132" Click="OldRequestBtn_Click" Height="32"/>
+                </StackPanel>
+              
+            </Grid>
         </Grid>
     </Grid>
 </Page>

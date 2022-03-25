@@ -37,6 +37,7 @@ namespace PRN211_PROJECT
             services.AddSingleton(typeof(IRequestRepository), typeof(RequestRepository));
             services.AddSingleton(typeof(IAdminStockRepository), typeof(AdminStockRepository));
             services.AddSingleton(typeof(ICategoryRepository), typeof(CategoryRepository));
+            services.AddSingleton(typeof(ISaleRepository), typeof(SaleRepository));
             // Pages
             services.AddSingleton<OrderModifyWindow>();
             services.AddSingleton<AdminWindow>();
