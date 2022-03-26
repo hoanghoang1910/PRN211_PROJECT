@@ -15,7 +15,9 @@ namespace PRN211_PROJECT.Models
         public bool? Status { get; set; }
         public DateTime DateCreated { get; set; }
 
-        public string StatusString { get
+        public string StatusString
+        {
+            get
             {
                 if ((bool)Status)
                 {
@@ -25,8 +27,9 @@ namespace PRN211_PROJECT.Models
                 {
                     return "Rejected";
                 }
-            } 
+            }
         }
+
 
         public virtual Product Product { get; set; }
         public virtual Store Store { get; set; }

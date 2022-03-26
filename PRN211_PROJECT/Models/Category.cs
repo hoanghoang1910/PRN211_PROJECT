@@ -17,10 +17,5 @@ namespace PRN211_PROJECT.Models
         public string CategoryDescription { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
-
-        public override string ToString()
-        {
-            return CategoryName;
-        }
     }
 }

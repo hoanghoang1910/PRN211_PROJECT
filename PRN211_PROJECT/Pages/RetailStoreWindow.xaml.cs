@@ -56,12 +56,12 @@ namespace PRN211_PROJECT.Pages
 
         private void order_btn_Click(object sender, RoutedEventArgs e)
         {
-            renderBody.Content = new OrderViewPage(_storeId, _saleRepo,_productRepo,_saleDetailRepo,_storeStockRepo);
+            renderBody.Content = new OrderViewPage(_storeId, _saleRepo, _productRepo, _saleDetailRepo, _storeStockRepo);
         }
 
         private void requestRestock_btn_Click(object sender, RoutedEventArgs e)
         {
-            renderBody.Content = new RetailRequestViewPage();
+            renderBody.Content = new RetailRequestViewPage(_storeId, _requestRepo, _productRepo);
         }
     }
 }
