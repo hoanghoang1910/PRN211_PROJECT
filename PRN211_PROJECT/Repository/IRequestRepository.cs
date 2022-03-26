@@ -16,5 +16,9 @@ namespace PRN211_PROJECT.Repository
         void DenyRequest(Request request);
         public List<Request> GetAllRequestFromRetail(int storeId);
         public List<Request> GetRequestsFromBetweenDate(int storeId, DateTime start, DateTime end);
+        int GetNumberOfRequestsToday();
+        int GetNumberOfRequestsThisMonth();
+        int GetNumberOfRequestsThisYear();
+        int GetNumberOfRequestsThisWeek();
     }
 }

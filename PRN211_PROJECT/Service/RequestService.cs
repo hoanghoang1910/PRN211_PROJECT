@@ -114,7 +114,7 @@ namespace PRN211_PROJECT.Service
 
         public int GetNumberOfRequestsThisWeek()
         {
-            return context.Requests.Where(s => GetIso8601WeekOfYear(s.DateCreated) == GetIso8601WeekOfYear(DateTime.Now)).Count();
+            return context.Requests.ToList().Where(s => GetIso8601WeekOfYear(s.DateCreated) == GetIso8601WeekOfYear(DateTime.Now)).Count();
         }
 
 

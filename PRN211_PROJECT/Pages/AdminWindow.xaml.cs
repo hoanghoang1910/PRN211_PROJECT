@@ -32,7 +32,7 @@ namespace PRN211_PROJECT.Pages
             IStoreRepository storeRepository, ISaleRepository saleRepository, ISaleDetailRepository saleDetailRepository)
         {
             InitializeComponent();
-            renderBody.Content = new AdminDashboardPage();
+            renderBody.Content = new AdminDashboardPage(requestRepository, saleRepository);
             this.requestRepository = requestRepository;
             this.adminStockRepository = adminStockRepository;
             this.categoryRepository = categoryRepository;
@@ -60,7 +60,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             DashboardBtn.Style = st;
-            renderBody.Content = new AdminDashboardPage();
+            renderBody.Content = new AdminDashboardPage(requestRepository, saleRepository);
 
         }
 
