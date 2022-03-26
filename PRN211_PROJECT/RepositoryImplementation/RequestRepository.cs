@@ -13,7 +13,7 @@ namespace PRN211_PROJECT.RepositoryImplementation
     {
         public bool AcceptRequest(Request request)
         {
-           return RequestService.Instance.AcceptRequest(request);
+            return RequestService.Instance.AcceptRequest(request);
         }
 
         public void AddRequest(Request request)
@@ -55,5 +55,8 @@ namespace PRN211_PROJECT.RepositoryImplementation
         {
             return RequestService.Instance.GetRequestsRemaining();
         }
+
+        public List<Request> GetAllRequestFromRetail(int storeId) => RequestService.Instance.GetAllRequestFromRetail(storeId);
+        public List<Request> GetRequestsFromBetweenDate(int storeId, DateTime start, DateTime end) => RequestService.Instance.GetRequestsFromBetweenDate(storeId, start, end);
     }
 }

@@ -34,8 +34,8 @@ namespace PRN211_PROJECT.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
-                optionsBuilder.UseSqlServer(config.GetConnectionString("PRN221-Hoang"));
+                    var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+                    optionsBuilder.UseSqlServer(config.GetConnectionString("PRN221-Hoang"));
             }
         }
 
@@ -49,7 +49,7 @@ namespace PRN211_PROJECT.Models
 
                 entity.ToTable("AdminStock");
 
-                entity.Property(e => e.ProductId).ValueGeneratedOnAdd();
+                entity.Property(e => e.ProductId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Product)
                     .WithOne(p => p.AdminStock)

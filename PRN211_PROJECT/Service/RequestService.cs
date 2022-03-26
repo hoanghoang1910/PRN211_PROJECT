@@ -131,5 +131,16 @@ namespace PRN211_PROJECT.Service
             // Return the week of our adjusted day
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
+
+        public List<Request> GetAllRequestFromRetail(int storeId)
+        {
+            return context.Requests.Include(x => x.Store).Include(x => x.Product).Where(x => x.StoreId == storeId).ToList();
+        }
+
+        public List<Request> GetRequestsFromBetweenDate(int storeId, DateTime start, DateTime end)
+        {
+            return context.Requests.Include(x => x.Store).Include(x => x.Product)
+                .Where(x => x.DateCreated >= start && x.DateCreated < end.AddDays(1)).Where(x => x.StoreId == storeId).ToList();
+        }
     }
 }
