@@ -34,7 +34,7 @@
         DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
                                 <GridViewColumn
-        DisplayMemberBinding="{Binding Product.Category}"
+        DisplayMemberBinding="{Binding Product.Category.CategoryName}"
         Header="Category" Width="150"/>
                                 <GridViewColumn
         DisplayMemberBinding="{Binding Product.Sale}"
@@ -138,7 +138,7 @@
         DisplayMemberBinding="{Binding Quantity}"
         Header="Quantity" Width="150"/>
                                 <GridViewColumn
-        DisplayMemberBinding="{Binding Product.Category}"
+        DisplayMemberBinding="{Binding Product.Category.CategoryName}"
         Header="Category" Width="150"/>
                                
                             </GridView>

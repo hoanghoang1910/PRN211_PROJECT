@@ -53,7 +53,7 @@ namespace PRN211_PROJECT
 
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            var StartUpWindow = serviceProvider.GetService<RetailStoreWindow>();
+            var StartUpWindow = serviceProvider.GetService<AdminWindow>();
             StartUpWindow?.Show();
         }
     }

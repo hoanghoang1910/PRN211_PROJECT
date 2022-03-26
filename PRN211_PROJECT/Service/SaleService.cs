@@ -91,7 +91,7 @@ namespace PRN211_PROJECT.Service
 
         public decimal GetIncomeThisWeek()
         {
-            return (decimal)context.Sales.Where(s => GetIso8601WeekOfYear(s.SaleDate) == GetIso8601WeekOfYear(DateTime.Now)).Sum(s => s.Bill);
+            return (decimal)context.Sales.ToList().Where(s => GetIso8601WeekOfYear(s.SaleDate) == GetIso8601WeekOfYear(DateTime.Now)).Sum(s => s.Bill);
         }
 
         public int GetNumberOfOrdersToday()
@@ -111,12 +111,12 @@ namespace PRN211_PROJECT.Service
 
         public List<Sale> GetTop5NewestOrder()
         {
-            return context.Sales.OrderByDescending(s => s.SaleDate).Take(5).ToList();
+            return context.Sales.Include(x => x.Store).OrderByDescending(s => s.SaleDate).Take(5).ToList();
         }
 
         public int GetNumberOfOrdersThisWeek()
         {
-            return context.Sales.Where(s => GetIso8601WeekOfYear(s.SaleDate) == GetIso8601WeekOfYear(DateTime.Now)).Count();
+            return context.Sales.ToList().Where(s => GetIso8601WeekOfYear(s.SaleDate) == GetIso8601WeekOfYear(DateTime.Now)).Count();
         }
 
         public int GetIso8601WeekOfYear(DateTime time)

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       xmlns:uc="clr-namespace:Dark_Admin_Panel.UserControls"
       xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
@@ -193,14 +194,14 @@
                         <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
                     </StackPanel>
 
-                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
-                        <TextBlock Text="70000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="60000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                    <StackPanel x:Name="ProfitPanel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
+                        <TextBlock Text="1050000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="900000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="750000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="600000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="450000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="300000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                        <TextBlock Text="150000" Foreground="#717EB2" Margin="0 0 0 25"/>
                         <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
                     </StackPanel>
 
@@ -240,7 +241,7 @@
                         </lvc:CartesianChart.AxisX>
 
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis MinValue="0" MaxValue="60000" Foreground="#717EB2" ShowLabels="False">
+                            <lvc:Axis x:Name="ChartValue" MinValue="0" MaxValue="1000000" Foreground="#717EB2" ShowLabels="False">
                                 <lvc:Axis.Separator>
                                     <lvc:Separator StrokeThickness="0"/>
                                 </lvc:Axis.Separator>
@@ -248,7 +249,7 @@
                         </lvc:CartesianChart.AxisY>
 
                         <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,50000,30000,20000,15000,15000,15000,15000,15000,15000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
+                            <lvc:LineSeries Name="Slm" Values="" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
                                 <lvc:LineSeries.Fill>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Color="#B397E2" Offset="0.4"/>
@@ -276,11 +277,11 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
-                        <uc:Item Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="Tshirt"/>
-                        <uc:Item Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoePrints"/>
-                        <uc:Item Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="Socks"/>
-                        <uc:Item Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="Tshirt"/>
-                        <uc:Item Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="HardHat"/>
+                        <uc:Item x:Name="LastOrder1" Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="ShoppingCart"/>
+                        <uc:Item x:Name="LastOrder2" Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoppingCart"/>
+                        <uc:Item x:Name="LastOrder3" Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="ShoppingCart"/>
+                        <uc:Item x:Name="LastOrder4" Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="ShoppingCart"/>
+                        <uc:Item x:Name="LastOrder5" Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="ShoppingCart"/>
                     </StackPanel>
                 </Grid>
             </Border>
