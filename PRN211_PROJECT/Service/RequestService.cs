@@ -124,7 +124,7 @@ namespace PRN211_PROJECT.Service
 
         public int GetNumberOfRequestsToday()
         {
-            return context.Requests.Where(r => r.DateCreated == DateTime.Today).Count();
+            return context.Requests.Where(r => r.DateCreated.Date == DateTime.Today).Count();
         }
 
         public int GetNumberOfRequestsThisMonth()

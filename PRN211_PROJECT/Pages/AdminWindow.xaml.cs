@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Repository;
+﻿using Microsoft.Extensions.Configuration;
+using PRN211_PROJECT.Repository;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -83,7 +84,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             StockBtn.Style = st;
-            renderBody.Content = new AdminStockPage(adminStockRepository, categoryRepository, 
+            renderBody.Content = new AdminStockPage(adminStockRepository, categoryRepository,
                 storeStockRepository, storeRepository);
         }
 
@@ -103,7 +104,9 @@ namespace PRN211_PROJECT.Pages
             NotificationBtn.Style = st;
             renderBody.Content = new AdminNotificationPage(notificationRepository);
             NotiNumber.Badge = "0";
-            File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", "0");
+            var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+            string rootDir = config.GetSection("NotiCountPath").Value.ToString();
+            File.WriteAllText(rootDir, "0");
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
@@ -111,7 +114,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             LogoutBtn.Style = st;
-            LoginWindow dialog = new LoginWindow(requestRepository, categoryRepository, adminStockRepository, 
+            LoginWindow dialog = new LoginWindow(requestRepository, categoryRepository, adminStockRepository,
                 storeStockRepository, storeRepository, saleRepository,
                 saleDetailRepository, notificationRepository, productRepository, loginInfoRepository);
             dialog.Show();
@@ -120,7 +123,9 @@ namespace PRN211_PROJECT.Pages
 
         public void UpdateNoticount()
         {
-            string notiNumber = File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt");
+            var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+            string rootDir = config.GetSection("NotiCountPath").Value.ToString();
+            string notiNumber = File.ReadAllText(rootDir);
             NotiNumber.Badge = notiNumber;
         }
     }

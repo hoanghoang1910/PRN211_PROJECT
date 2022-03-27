@@ -85,7 +85,7 @@ namespace PRN211_PROJECT.Service
 
         public decimal GetIncomeToday()
         {
-            return (decimal)context.Sales.Where(s => s.SaleDate == DateTime.Today).Sum(s => s.Bill);
+            return (decimal)context.Sales.Where(s => s.SaleDate.Date == DateTime.Today).Sum(s => s.Bill);
         }
 
         public decimal GetIncomeThisMonth()
@@ -105,7 +105,7 @@ namespace PRN211_PROJECT.Service
 
         public int GetNumberOfOrdersToday()
         {
-            return context.Sales.Where(s => s.SaleDate == DateTime.Today).Count();
+            return context.Sales.Where(s => s.SaleDate.Date == DateTime.Today).Count();
         }
 
         public int GetNumberOfOrdersThisMonth()
