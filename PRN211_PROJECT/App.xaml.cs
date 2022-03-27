@@ -49,11 +49,14 @@ namespace PRN211_PROJECT
             services.AddSingleton<AdminRequest>();
             services.AddSingleton<AdminStockPage>();
             services.AddSingleton<AdminOrderPage>();
+            services.AddSingleton<LoginWindow>();
+            services.AddSingleton<LoginRetail>();
+            services.AddSingleton<LoginAdmin>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)
         {
-            var StartUpWindow = serviceProvider.GetService<RetailStoreWindow>();
+            var StartUpWindow = serviceProvider.GetService<LoginWindow>();
             StartUpWindow?.Show();
         }
     }
