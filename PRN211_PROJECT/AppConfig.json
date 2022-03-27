@@ -1,5 +1,6 @@
 {
   "ConnectionStrings": {
     "PRN221-Hoang": "server=localhost; database=ProjectPRN211;uid=sa;password=19102001"
-  }
+  },
+  "NotiCountPath": "D:\\Spring2022\\PRN211\\FinalProject\\PRN211_PROJECT\\PRN211_PROJECT\\NotiCount.txt"
 }
