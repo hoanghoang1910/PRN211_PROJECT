@@ -13,6 +13,6 @@ namespace PRN211_PROJECT.RepositoryImplementation
     {
         public List<Product> GetAllProducts() => ProductService.Instance.GetAllProducts();
 
-
+        public List<Product> GetAllProductsWithSearch(string search) => ProductService.Instance.GetAllProductsWithSearch(search);
     }
 }

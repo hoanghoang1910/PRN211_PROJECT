@@ -50,8 +50,9 @@ namespace PRN211_PROJECT.Pages
 
         private void add_req_btn_Click(object sender, RoutedEventArgs e)
         {
-            AddRequestWindow window = new AddRequestWindow();
+            AddRequestWindow window = new AddRequestWindow(_storeId, _requestRepository, _productRepository);
             window.ShowDialog();
+            ListBinding();
         }
 
         private void search_btn_Click(object sender, RoutedEventArgs e)

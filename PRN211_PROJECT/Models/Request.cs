@@ -19,6 +19,10 @@ namespace PRN211_PROJECT.Models
         {
             get
             {
+                if(Status == null)
+                {
+                    return "Pending";
+                }
                 if ((bool)Status)
                 {
                     return "Accepted";

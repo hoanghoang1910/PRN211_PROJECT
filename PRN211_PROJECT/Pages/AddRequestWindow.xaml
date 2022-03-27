@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
         mc:Ignorable="d"
-        Title="AddRequestWindow" Height="500" Width="900" WindowStyle="None" AllowsTransparency="True" Background="#F6E7D8">
+        Title="AddRequestWindow" Height="500" Width="900" WindowStyle="None" AllowsTransparency="True" Background="#F6E7D8" Loaded="Window_Loaded">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20"/>
     </WindowChrome.WindowChrome>
@@ -21,7 +21,7 @@
                     Margin="5"
                     Foreground="White"
                     Background="#874356"
-                    BorderBrush="{x:Null}">
+                    BorderBrush="{x:Null}" Click="window_close_button_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
@@ -46,14 +46,16 @@
 
                     <Grid Grid.Column="0" Margin="10">
                         <TextBox
-                        materialDesign:HintAssist.Hint="Enter Product Id"
+                            Name="search_tb"
+                        materialDesign:HintAssist.Hint="Enter Product Name"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         />
                     </Grid>
                     <Grid Grid.Column="1">
                         <Button
+                            Name="search_btn"
                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                        Background="#C65D7B" BorderBrush="{x:Null}">
+                        Background="#C65D7B" BorderBrush="{x:Null}" Click="search_btn_Click">
                             <materialDesign:PackIcon
                             Kind="Magnify"
                             Height="25"
@@ -64,12 +66,12 @@
                 </Grid>
                 <Grid Grid.Row="1" Margin="15 0">
                     <materialDesign:Card UniformCornerRadius="5" Padding="5">
-                        <ListView Name="list_lv" d:ItemsSource="{d:SampleData ItemCount=1}">
+                        <ListView Name="list_lv" d:ItemsSource="{d:SampleData ItemCount=1}" SelectionChanged="list_lv_SelectionChanged">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Id"/>
-                                    <GridViewColumn Header="Name"/>
-                                    <GridViewColumn Header="Category"/>
+                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding ProductId}"/>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ProductName}"/>
+                                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.CategoryName}"/>
                                     <!--<GridViewColumn Header="Option">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -117,7 +119,7 @@
                         Margin="10"
                         MaxHeight="40"/>
                             <TextBox
-                            Name="product_des_tb"
+                            Name="message_tb"
                             materialDesign:HintAssist.Hint="Message"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             TextWrapping="Wrap"
@@ -163,18 +165,22 @@
             </Grid>-->
                 <Grid Grid.Row="1" Margin="10,0,10,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                        <Button
+                            Name="cancel_request"
+                            Style="{StaticResource MaterialDesignFlatLightBgButton}"
                             Content="Cancel Request"
                             BorderBrush="{x:Null}"
                             Foreground="#F6E7D8"
                             Background="#C65D7B"
                             Margin="10 0"></Button>
-                        <Button Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                        <Button
+                            Name="confirm_request"
+                            Style="{StaticResource MaterialDesignFlatLightBgButton}"
                             Content="Confirm Request"
                             BorderBrush="{x:Null}"
                             Foreground="#F6E7D8"
                             Background="#C65D7B"
-                            Margin="10 0"></Button>
+                            Margin="10 0" Click="confirm_request_Click"></Button>
                     </StackPanel>
                 </Grid>
             </Grid>

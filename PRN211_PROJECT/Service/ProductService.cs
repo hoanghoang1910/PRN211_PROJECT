@@ -35,6 +35,11 @@ namespace PRN211_PROJECT.Service
             return _context.Products.Include(s => s.Category).ToList();
         }
 
-        
+        public List<Product> GetAllProductsWithSearch(string search)
+        {
+            return _context.Products.Include(s => s.Category).Where(x => x.ProductName.Contains(search)).ToList();
+        }
+
+
     }
 }
