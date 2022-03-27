@@ -25,8 +25,8 @@
             </Grid>
 
             <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                <TextBlock Text="{Binding Path=Title,ElementName=item}" FontSize="14" Foreground="#7C8DC3"/>
-                <TextBlock Text="{Binding Path=Desc,ElementName=item}" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
+                <TextBlock Text="{Binding Path=Title,ElementName=item}" FontSize="14" Foreground="White"/>
+                <TextBlock Text="{Binding Path=Desc,ElementName=item}" FontSize="11" Foreground="White" Margin="0 3 0 0"/>
             </StackPanel>
         </StackPanel>
         

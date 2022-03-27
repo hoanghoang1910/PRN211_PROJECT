@@ -32,15 +32,33 @@ namespace PRN211_PROJECT.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             List<Notification> list = notificationRepository.GetNotifications();
-            foreach(Notification n in list)
+            foreach (Notification n in list)
             {
-                if(n.NotiFromNavigation == null)
+                if (n.NotiFromNavigation == null)
                 {
                     n.NotiFromNavigation = new Store { StoreName = "From Admin" };
                 }
 
             }
             ListBoxNoti.ItemsSource = list;
+        }
+
+        private void ListBoxNoti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Notification selected = (Notification)ListBoxNoti.SelectedItem;
+            AdminWindow main = Window.GetWindow(this) as AdminWindow;
+            if (selected.NotiType == 1 || selected.NotiType == 2)
+            {
+                main.StockBtn_Click(sender, e);
+            }
+            else if(selected.NotiType == 3 || selected.NotiType == 4 || selected.NotiType == 5)
+            {
+                main.RequestBtn_Click(sender, e);
+            }
+            else if(selected.NotiType == 6)
+            {
+                main.OrderBtn_Click(sender,e);
+            }
         }
     }
 }

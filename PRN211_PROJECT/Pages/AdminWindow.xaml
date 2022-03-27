@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
         Title="AdminWindow" Height="740" Width="1280" Background="{x:Null}"
@@ -203,24 +204,13 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="StatisticsBtn" Style="{StaticResource menuButton}" Click="StatisticsBtn_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="ChartArea" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Statistics" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
-
-                <Button x:Name="RevenueBtn" Style="{StaticResource menuButton}" Click="RevenueBtn_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Coins" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Revenue" Style="{StaticResource menuButtonText}"/>
-                    </StackPanel>
-                </Button>
+               
 
                 <Button x:Name="NotificationBtn" Style="{StaticResource menuButton}" Click="NotificationBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Bell" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Notification" Style="{StaticResource menuButtonText}"/>
+                        <materialDesign:Badged x:Name="NotiNumber" Badge="123" Margin="80 0 10 10"/>
                     </StackPanel>
                 </Button>
 

@@ -34,6 +34,15 @@ namespace PRN211_PROJECT.Service
         {
             context.Sales.Add(sale);
             context.SaveChanges();
+            Notification noti = new Notification
+            {
+                NotificationMessage = $"Order from {sale.Store.StoreName} has been created",
+                NotiDate = DateTime.Now,
+                NotiType = 6,
+                NotiFrom = sale.Store.StoreId
+            };
+            context.Notifications.Add(noti);
+            context.SaveChanges();
         }
 
         public void Delete(Sale sale)

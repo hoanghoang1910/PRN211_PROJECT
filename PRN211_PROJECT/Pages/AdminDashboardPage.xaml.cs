@@ -104,7 +104,7 @@ namespace PRN211_PROJECT.Pages
 
         private void UpdateTopFiveOrders()
         {
-           /* List<Sale> lastFiveOrders = saleRepository.GetTop5NewestOrder();
+            List<Sale> lastFiveOrders = saleRepository.GetTop5NewestOrder();
             LastOrder1.Title = lastFiveOrders[0].Store.StoreName;
             LastOrder2.Title = lastFiveOrders[1].Store.StoreName;
             LastOrder3.Title = lastFiveOrders[2].Store.StoreName;
@@ -114,7 +114,7 @@ namespace PRN211_PROJECT.Pages
             LastOrder2.Desc = lastFiveOrders[1].Bill.ToString().Split(',')[0] + " đ";
             LastOrder3.Desc = lastFiveOrders[2].Bill.ToString().Split(',')[0] + " đ";
             LastOrder4.Desc = lastFiveOrders[3].Bill.ToString().Split(',')[0] + " đ";
-            LastOrder5.Desc = lastFiveOrders[4].Bill.ToString().Split(',')[0] + " đ";*/
+            LastOrder5.Desc = lastFiveOrders[4].Bill.ToString().Split(',')[0] + " đ";
         }
 
         private void ResetBtn()
@@ -151,6 +151,37 @@ namespace PRN211_PROJECT.Pages
             ResetBtn();
             ThisYearBtn.Background = new SolidColorBrush(Color.FromArgb(100, 91, 96, 196));
             UpdateCardThisYear();
+        }
+
+        private void LastOrder1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoadOrderContent(sender, e);
+        }
+
+        private void LastOrder2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoadOrderContent(sender, e);
+        }
+
+        private void LastOrder3_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoadOrderContent(sender, e);
+        }
+
+        private void LastOrder4_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoadOrderContent(sender, e);
+        }
+
+        private void LastOrder5_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LoadOrderContent(sender, e);
+        }
+
+        private void LoadOrderContent(object sender, MouseButtonEventArgs e)
+        {
+            AdminWindow main = Window.GetWindow(this) as AdminWindow;
+            main.OrderBtn_Click(sender, e);
         }
     }
 }

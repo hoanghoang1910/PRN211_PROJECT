@@ -4,6 +4,7 @@ using PRN211_PROJECT.RepositoryImplementation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -164,6 +165,8 @@ namespace PRN211_PROJECT.Pages
                 _stockRepository.CheckoutProductFromStock(obj.ProductId, obj.Quantity, _storeId);
                 _saleDetailRepository.AddSaleDetail(obj);
             }
+            int currentNotiCount = int.Parse(File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt")) + 1;
+            File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", currentNotiCount.ToString());
             this.Close();
         }
     }

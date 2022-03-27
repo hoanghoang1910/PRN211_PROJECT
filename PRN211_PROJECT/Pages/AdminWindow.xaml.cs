@@ -1,6 +1,7 @@
 ﻿using PRN211_PROJECT.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,17 +48,16 @@ namespace PRN211_PROJECT.Pages
             this.notificationRepository = notificationRepository;
             this.productRepository = productRepository;
             this.loginInfoRepository = loginInfoRepository;
+            UpdateNoticount();
         }
 
-        private void resetSelection()
+        public void resetSelection()
         {
             Style st = FindResource("menuButton") as Style;
             DashboardBtn.Style = st;
             RequestBtn.Style = st;
             StockBtn.Style = st;
             OrderBtn.Style = st;
-            StatisticsBtn.Style = st;
-            RevenueBtn.Style = st;
             NotificationBtn.Style = st;
             LogoutBtn.Style = st;
         }
@@ -68,10 +68,9 @@ namespace PRN211_PROJECT.Pages
             Style st = FindResource("menuButtonActive") as Style;
             DashboardBtn.Style = st;
             renderBody.Content = new AdminDashboardPage(requestRepository, saleRepository);
-
         }
 
-        private void RequestBtn_Click(object sender, RoutedEventArgs e)
+        public void RequestBtn_Click(object sender, RoutedEventArgs e)
         {
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
@@ -79,7 +78,7 @@ namespace PRN211_PROJECT.Pages
             renderBody.Content = new AdminRequest(requestRepository);
         }
 
-        private void StockBtn_Click(object sender, RoutedEventArgs e)
+        public void StockBtn_Click(object sender, RoutedEventArgs e)
         {
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
@@ -88,7 +87,7 @@ namespace PRN211_PROJECT.Pages
                 storeStockRepository, storeRepository);
         }
 
-        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        public void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
@@ -96,19 +95,6 @@ namespace PRN211_PROJECT.Pages
             renderBody.Content = new AdminOrderPage(saleRepository, saleDetailRepository, storeRepository);
         }
 
-        private void StatisticsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            resetSelection();
-            Style st = FindResource("menuButtonActive") as Style;
-            StatisticsBtn.Style = st;
-        }
-
-        private void RevenueBtn_Click(object sender, RoutedEventArgs e)
-        {
-            resetSelection();
-            Style st = FindResource("menuButtonActive") as Style;
-            RevenueBtn.Style = st;
-        }
 
         private void NotificationBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -116,6 +102,8 @@ namespace PRN211_PROJECT.Pages
             Style st = FindResource("menuButtonActive") as Style;
             NotificationBtn.Style = st;
             renderBody.Content = new AdminNotificationPage(notificationRepository);
+            NotiNumber.Badge = "0";
+            File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", "0");
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
@@ -128,6 +116,12 @@ namespace PRN211_PROJECT.Pages
                 saleDetailRepository, notificationRepository, productRepository, loginInfoRepository);
             dialog.Show();
             this.Close();
+        }
+
+        public void UpdateNoticount()
+        {
+            string notiNumber = File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt");
+            NotiNumber.Badge = notiNumber;
         }
     }
 }

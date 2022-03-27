@@ -277,11 +277,11 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
-                        <uc:Item x:Name="LastOrder1" Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="ShoppingCart"/>
-                        <uc:Item x:Name="LastOrder2" Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoppingCart"/>
-                        <uc:Item x:Name="LastOrder3" Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="ShoppingCart"/>
-                        <uc:Item x:Name="LastOrder4" Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="ShoppingCart"/>
-                        <uc:Item x:Name="LastOrder5" Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="ShoppingCart"/>
+                        <uc:Item x:Name="LastOrder1" Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="ShoppingCart" MouseDoubleClick="LastOrder1_MouseDoubleClick"/>
+                        <uc:Item x:Name="LastOrder2" Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoppingCart" MouseDoubleClick="LastOrder2_MouseDoubleClick"/>
+                        <uc:Item x:Name="LastOrder3" Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="ShoppingCart" MouseDoubleClick="LastOrder3_MouseDoubleClick"/>
+                        <uc:Item x:Name="LastOrder4" Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="ShoppingCart" MouseDoubleClick="LastOrder4_MouseDoubleClick"/>
+                        <uc:Item x:Name="LastOrder5" Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="ShoppingCart" MouseDoubleClick="LastOrder5_MouseDoubleClick"/>
                        
                     </StackPanel>
                 </Grid>

@@ -46,5 +46,13 @@ namespace PRN211_PROJECT.Models
                 }
             }
         }
+
+        public string Description
+        {
+            get
+            {
+                return NotificationMessage +"\n"+ DateTime.Parse(NotiDate.ToString()).ToShortDateString();
+            }
+        }
     }
 }
