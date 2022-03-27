@@ -47,6 +47,7 @@
 
                     <Grid Grid.Column="0" Margin="15 10">
                         <TextBox
+                            Name="search_tb"
                         materialDesign:HintAssist.Hint="Enter Product Id"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         MaxHeight="40"
@@ -54,8 +55,9 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Button
+                            Name="search_btn"
                         Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                        Background="#C65D7B" BorderBrush="{x:Null}">
+                        Background="#C65D7B" BorderBrush="{x:Null}" Click="search_btn_Click">
                             <materialDesign:PackIcon
                             Kind="Magnify"
                             Height="25"

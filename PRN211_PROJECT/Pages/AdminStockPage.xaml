@@ -8,6 +8,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
       >
+    <Page.Resources>
+        <Style x:Key="titleText" TargetType="Label">
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid x:Name="AdminStockGrid" Visibility="Visible" Margin="20">
@@ -89,7 +98,7 @@
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="2">
                     <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
-                    <Label FontWeight="Bold" FontSize="20" Content="Filter" Foreground="#DDFFFFFF" Margin="35,0,29,0"/>
+                    <Label Style="{StaticResource titleText}" FontSize="25" Content="Filter" Foreground="#DDFFFFFF" Margin="12,0,29,0"/>
                 </Grid>
                 <Grid  Grid.Row="1" Grid.Column="2">
                     <Border HorizontalAlignment="Left"  BorderBrush="#41518F" BorderThickness="2"/>
@@ -140,7 +149,7 @@
                                 <GridViewColumn
         DisplayMemberBinding="{Binding Product.Category.CategoryName}"
         Header="Category" Width="150"/>
-                               
+
                             </GridView>
                         </ListView.View>
                     </ListView>

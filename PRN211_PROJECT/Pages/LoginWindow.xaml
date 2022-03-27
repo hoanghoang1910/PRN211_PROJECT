@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded">
+        Title="LoginWindow" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"></WindowChrome>
     </WindowChrome.WindowChrome>

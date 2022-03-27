@@ -75,7 +75,7 @@ namespace PRN211_PROJECT.Pages
             var curItem = ((ListViewItem)product_lb.ContainerFromElement((Button)sender));
             var selected = curItem.DataContext as StoreStock;
             //MessageBox.Show($"Selected index = {selected.ProductName}");
-            
+
             if (selected != null)
             {
                 var cartItem = _cartItems.FirstOrDefault(x => x.Product.ProductId == selected.ProductId);
@@ -170,7 +170,15 @@ namespace PRN211_PROJECT.Pages
             string rootDir = config.GetSection("NotiCountPath").Value.ToString();
             int currentNotiCount = int.Parse(File.ReadAllText(rootDir)) + 1;
             File.WriteAllText(rootDir, currentNotiCount.ToString());
+            MessageBox.Show("Create Sale Order Success");
             this.Close();
+        }
+
+        private void search_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var search = search_tb.Text.Trim();
+            _orders = _stockRepository.GetAllProductFromStockWithSearch(_storeId, search);
+            product_lb.ItemsSource = _orders;
         }
     }
 }
