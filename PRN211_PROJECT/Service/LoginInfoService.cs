@@ -27,5 +27,31 @@ namespace PRN211_PROJECT.Service
                 }
             }
         }
+
+        public int CheckLoginSaler(string username, string password) 
+        {
+            LoginInfo login = context.LoginInfos.Where(l => l.Username == username && l.Password == password).FirstOrDefault();
+            if(login != null && login.Role != "Admin")
+            {
+                return int.Parse(login.Role);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public bool CheckLoginAdmin(string username, string password)
+        {
+            LoginInfo login = context.LoginInfos.Where(l => l.Username == username && l.Password == password).FirstOrDefault();
+            if(login != null && login.Role == "Admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

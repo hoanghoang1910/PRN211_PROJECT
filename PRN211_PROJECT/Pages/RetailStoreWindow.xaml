@@ -65,7 +65,7 @@
                                     HorizontalAlignment="Left"
                                     BorderBrush="{x:Null}"
                                     Background="{x:Null}"
-                                    Foreground="Black">
+                                    Foreground="Black" Click="logout_btn_Click">
                                 <StackPanel Margin="-5">
                                     <materialDesign:PackIcon Kind="Logout"></materialDesign:PackIcon>
                                 </StackPanel>

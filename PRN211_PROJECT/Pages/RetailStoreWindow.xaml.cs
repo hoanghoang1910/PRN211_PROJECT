@@ -27,16 +27,22 @@ namespace PRN211_PROJECT.Pages
         ICategoryRepository _categoryRepo;
         IProductRepository _productRepo;
         ISaleDetailRepository _saleDetailRepo;
+        IAdminStockRepository adminStockRepository;
+        INotificationRepository notificationRepository;
+        ILoginInfoRepository loginInfoRepository;
 
-        private int _storeId = 1;
+        private int _storeId;
 
         public RetailStoreWindow(IStoreStockRepository storeStockRepository
             , ISaleRepository saleRepository
             , IStoreRepository storeRepository
             , IRequestRepository requestRepository
             , ICategoryRepository categoryRepository
-            , IProductRepository productRepository
-, ISaleDetailRepository saleDetailRepo)
+            , IProductRepository productRepository, 
+            IAdminStockRepository adminStockRepository,
+            INotificationRepository notificationRepository, 
+            ILoginInfoRepository loginInfoRepository
+, ISaleDetailRepository saleDetailRepo, int storeId)
         {
             InitializeComponent();
             _storeStockRepo = storeStockRepository;
@@ -46,6 +52,10 @@ namespace PRN211_PROJECT.Pages
             _categoryRepo = categoryRepository;
             _productRepo = productRepository;
             _saleDetailRepo = saleDetailRepo;
+            _storeId = storeId;
+            this.adminStockRepository = adminStockRepository;
+            this.notificationRepository = notificationRepository;
+            this.loginInfoRepository = loginInfoRepository;
             renderBody.Content = new ProductViewPage(_storeId, _storeStockRepo, _categoryRepo);
         }
 
@@ -62,6 +72,15 @@ namespace PRN211_PROJECT.Pages
         private void requestRestock_btn_Click(object sender, RoutedEventArgs e)
         {
             renderBody.Content = new RetailRequestViewPage(_storeId, _requestRepo, _productRepo);
+        }
+
+        private void logout_btn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow dialog = new LoginWindow(_requestRepo, _categoryRepo, 
+                adminStockRepository, _storeStockRepo, _storeRepo, _saleRepo,
+                _saleDetailRepo, notificationRepository, _productRepo, loginInfoRepository);
+            dialog.Show();
+            this.Close();
         }
     }
 }

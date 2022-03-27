@@ -282,6 +282,7 @@
                         <uc:Item x:Name="LastOrder3" Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="ShoppingCart"/>
                         <uc:Item x:Name="LastOrder4" Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="ShoppingCart"/>
                         <uc:Item x:Name="LastOrder5" Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="ShoppingCart"/>
+                       
                     </StackPanel>
                 </Grid>
             </Border>
