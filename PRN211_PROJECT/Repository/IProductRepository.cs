@@ -10,5 +10,6 @@ namespace PRN211_PROJECT.Repository
     public interface IProductRepository
     {
         public List<Product> GetAllProducts();
+        public List<Product> GetAllProductsWithSearch(string search);
     }
 }

@@ -115,6 +115,12 @@
                         </ListView>
                     </Grid>
                     <Grid Grid.Column="1">
+                        <!--<materialDesign:PopupBox
+                            VerticalAlignment="Top">
+                            <StackPanel>
+                                <Button Content="delete"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox>-->
                     </Grid>
 
                 </Grid>
