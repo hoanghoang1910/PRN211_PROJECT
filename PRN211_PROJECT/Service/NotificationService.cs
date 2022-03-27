@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PRN211_PROJECT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,11 @@ namespace PRN211_PROJECT.Service
                     return instance;
                 }
             }
+        }
+
+        public List<Notification> GetNotifications()
+        {
+            return context.Notifications.Include(n => n.NotiFromNavigation).Include(n => n.NotiTypeNavigation).ToList();
         }
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PRN211_PROJECT.Repository
 {
-    interface ILoginInfoRepository
+    public interface ILoginInfoRepository
     {
+        int CheckLoginForSaler(string username, string password);
+        bool CheckLoginForAdmin(string username, string password);
     }
 }

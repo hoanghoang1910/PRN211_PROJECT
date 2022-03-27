@@ -1,0 +1,165 @@
+﻿<Page x:Class="PRN211_PROJECT.Pages.AdminNotificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PRN211_PROJECT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:uc="clr-namespace:Dark_Admin_Panel.UserControls"
+      xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+      Title="AdminNotificationPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+       
+        <Style x:Key="menuButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#707DB2" />
+            <Setter Property="Tag" Value="#6673B7" />
+            <Setter Property="Margin" Value="0 0 0 5" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="4 0 0 0" BorderBrush="Transparent">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#BCCAF1" />
+                    <Setter Property="Tag" Value="#7071F0" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                <GradientStop Color="#31407B" Offset="0" />
+                                <GradientStop Color="#495385" Offset="3" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="4 0 0 0" BorderBrush="#A5A1F5">
+                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="menuButtonActive" TargetType="Button">
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#31407B" Offset="0" />
+                        <GradientStop Color="#495385" Offset="3" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#BCCAF1" />
+            <Setter Property="Tag" Value="#7071F0" />
+            <Setter Property="Margin" Value="0 0 0 5" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="4 0 0 0" BorderBrush="#A5A1F5">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="menuButtonIcon" TargetType="fa:IconImage">
+            <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+            <Setter Property="Width" Value="23" />
+            <Setter Property="Height" Value="23" />
+            <Setter Property="Margin" Value="35 0 20 0" />
+        </Style>
+
+
+        <Style x:Key="menuButtonText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+
+        <Style x:Key="topMenuButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#9EABE2" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="5 0 0 0" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#5B60C4" />
+                    <Setter Property="Foreground" Value="#ffffff" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="titleText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+
+        <Style x:Key="titleIcon" TargetType="fa:IconImage">
+            <Setter Property="Foreground" Value="#7B82EA" />
+            <Setter Property="Width" Value="18" />
+            <Setter Property="Height" Value="18" />
+            <Setter Property="Margin" Value="0 3 0 0" />
+        </Style>
+
+        <DataTemplate x:Key="listBoxTemplate">
+            <uc:Item Title="{Binding NotiFromNavigation.StoreName}" Desc="{Binding NotificationMessage}" Icon="{Binding GetIcon}" Width="792"/>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="28 0 0 15">
+            <fa:IconImage Icon="Bell" Style="{StaticResource titleIcon}"/>
+            <TextBlock Text="Notification" Style="{StaticResource titleText}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <ListBox x:Name="ListBoxNoti" ItemTemplate="{StaticResource listBoxTemplate}">
+                
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Page>

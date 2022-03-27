@@ -42,14 +42,14 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button
+                            <Button x:Name="loginBtn"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 ToolTip="Resource name: MaterialDesignRaisedLightButton"
                                 Content="Login"
                                 Background="#FFC65D7B"
                                 BorderBrush="{x:Null}"
                                 Foreground="White"
-                                Width="200"/>
+                                Width="200" Click="loginBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

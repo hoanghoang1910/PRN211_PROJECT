@@ -38,6 +38,8 @@ namespace PRN211_PROJECT
             services.AddSingleton(typeof(IAdminStockRepository), typeof(AdminStockRepository));
             services.AddSingleton(typeof(ICategoryRepository), typeof(CategoryRepository));
             services.AddSingleton(typeof(ISaleRepository), typeof(SaleRepository));
+            services.AddSingleton(typeof(INotificationRepository), typeof(NotificationRepository));
+            services.AddSingleton(typeof(ILoginInfoRepository), typeof(LoginInfoRepository));
             // Pages
             services.AddSingleton<OrderModifyWindow>();
             services.AddSingleton<AdminWindow>();
@@ -52,6 +54,7 @@ namespace PRN211_PROJECT
             services.AddSingleton<LoginWindow>();
             services.AddSingleton<LoginRetail>();
             services.AddSingleton<LoginAdmin>();
+            services.AddSingleton<AdminNotificationPage>();
         }
 
         private void OnStartUp(object sender, StartupEventArgs e)

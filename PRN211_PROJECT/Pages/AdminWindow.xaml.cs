@@ -27,9 +27,13 @@ namespace PRN211_PROJECT.Pages
         IStoreStockRepository storeStockRepository;
         ISaleRepository saleRepository;
         ISaleDetailRepository saleDetailRepository;
+        INotificationRepository notificationRepository;
+        IProductRepository productRepository;
+        ILoginInfoRepository loginInfoRepository;
         public AdminWindow(IRequestRepository requestRepository, ICategoryRepository categoryRepository,
             IAdminStockRepository adminStockRepository, IStoreStockRepository storeStockRepository,
-            IStoreRepository storeRepository, ISaleRepository saleRepository, ISaleDetailRepository saleDetailRepository)
+            IStoreRepository storeRepository, ISaleRepository saleRepository, ISaleDetailRepository saleDetailRepository,
+            INotificationRepository notificationRepository, ILoginInfoRepository loginInfoRepository, IProductRepository productRepository)
         {
             InitializeComponent();
             renderBody.Content = new AdminDashboardPage(requestRepository, saleRepository);
@@ -40,6 +44,9 @@ namespace PRN211_PROJECT.Pages
             this.storeStockRepository = storeStockRepository;
             this.saleDetailRepository = saleDetailRepository;
             this.saleRepository = saleRepository;
+            this.notificationRepository = notificationRepository;
+            this.productRepository = productRepository;
+            this.loginInfoRepository = loginInfoRepository;
         }
 
         private void resetSelection()
@@ -108,6 +115,7 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             NotificationBtn.Style = st;
+            renderBody.Content = new AdminNotificationPage(notificationRepository);
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
@@ -115,6 +123,11 @@ namespace PRN211_PROJECT.Pages
             resetSelection();
             Style st = FindResource("menuButtonActive") as Style;
             LogoutBtn.Style = st;
+            LoginWindow dialog = new LoginWindow(requestRepository, categoryRepository, adminStockRepository, 
+                storeStockRepository, storeRepository, saleRepository,
+                saleDetailRepository, notificationRepository, productRepository, loginInfoRepository);
+            dialog.Show();
+            this.Close();
         }
     }
 }
