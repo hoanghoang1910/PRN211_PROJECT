@@ -68,6 +68,14 @@ namespace PRN211_PROJECT.Service
             context1.Products.Update(p);
             context1.AdminStocks.Update(adminStock);
             context1.SaveChanges();
+            Notification noti = new Notification
+            {
+                NotificationMessage = $"Product {p.ProductName} is updated",
+                NotiType = 2,
+                NotiDate = DateTime.Now
+            };
+            context.Notifications.Add(noti);
+            context.SaveChanges();
         }
 
         public void AddProductToStock(Product p,int quantity)
@@ -78,6 +86,14 @@ namespace PRN211_PROJECT.Service
             AdminStock a = new AdminStock { ProductId = p.ProductId, Quantity = quantity };
             context1.AdminStocks.Add(a);
             context1.SaveChanges();
+            Notification noti = new Notification
+            {
+                NotificationMessage = $"Product {p.ProductName} is created",
+                NotiType = 1,
+                NotiDate = DateTime.Now
+            };
+            context.Notifications.Add(noti);
+            context.SaveChanges();
         }
     }
 }

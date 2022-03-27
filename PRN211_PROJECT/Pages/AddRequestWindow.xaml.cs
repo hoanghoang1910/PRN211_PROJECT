@@ -2,6 +2,7 @@
 using PRN211_PROJECT.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,6 +91,8 @@ namespace PRN211_PROJECT.Pages
                     };
 
                     _requestRepository.AddRequest(requestToAdd);
+                    int currentNotiCount = int.Parse(File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt")) + 1;
+                    File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", currentNotiCount.ToString());
                 }
             }
             catch (Exception ex)

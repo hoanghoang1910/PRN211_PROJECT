@@ -53,6 +53,15 @@ namespace PRN211_PROJECT.Service
             request.Status = null;
             context.Requests.Add(request);
             context.SaveChanges();
+            Notification noti = new Notification
+            {
+                NotiDate = DateTime.Now,
+                NotificationMessage = $"Request from {request.Store.StoreName} created",
+                NotiType = 5,
+                NotiFrom = request.StoreId
+            };
+            context.Notifications.Add(noti);
+            context.SaveChanges();
         }
 
         public bool AcceptRequest(Request request)
@@ -82,6 +91,14 @@ namespace PRN211_PROJECT.Service
                     context.StoreStocks.Update(storeStock);
                 }
                 context.SaveChanges();
+                Notification noti = new Notification
+                {
+                    NotificationMessage = $"Request with id {request.RequestId} accepted",
+                    NotiType = 3,
+                    NotiDate = DateTime.Now
+                };
+                context.Notifications.Add(noti);
+                context.SaveChanges();
                 return true;
             }
             else
@@ -94,6 +111,14 @@ namespace PRN211_PROJECT.Service
         {
             request.Status = false;
             context.Requests.Update(request);
+            context.SaveChanges();
+            Notification noti = new Notification
+            {
+                NotificationMessage = $"Request with id {request.RequestId} rejected",
+                NotiType = 4,
+                NotiDate = DateTime.Now
+            };
+            context.Notifications.Add(noti);
             context.SaveChanges();
         }
 

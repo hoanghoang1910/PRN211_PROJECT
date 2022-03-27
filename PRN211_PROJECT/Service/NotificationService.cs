@@ -31,7 +31,11 @@ namespace PRN211_PROJECT.Service
 
         public List<Notification> GetNotifications()
         {
-            return context.Notifications.Include(n => n.NotiFromNavigation).Include(n => n.NotiTypeNavigation).ToList();
+            return context.Notifications
+                .Include(n => n.NotiFromNavigation)
+                .Include(n => n.NotiTypeNavigation)
+                .OrderByDescending(n => n.NotiDate)
+                .ToList();
         }
     }
 }
