@@ -1,4 +1,5 @@
-﻿using PRN211_PROJECT.Models;
+﻿using Microsoft.Extensions.Configuration;
+using PRN211_PROJECT.Models;
 using PRN211_PROJECT.Repository;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,10 @@ namespace PRN211_PROJECT.Pages
             adminStock.Quantity = int.Parse(QuantityTb.Text);
             adminStockRepository.UpdateAdminStock(adminStock);
             LoadStockListView();
-            int currentNotiCount = int.Parse(File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt")) + 1;
-            File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", currentNotiCount.ToString());
+            var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+            string rootDir = config.GetSection("NotiCountPath").Value.ToString();
+            int currentNotiCount = int.Parse(File.ReadAllText(rootDir)) + 1;
+            File.WriteAllText(rootDir, currentNotiCount.ToString());
             AdminWindow main = Window.GetWindow(this) as AdminWindow;
             main.UpdateNoticount();
         }
@@ -119,8 +122,10 @@ namespace PRN211_PROJECT.Pages
             int quantity = int.Parse(QuantityTb.Text);
             adminStockRepository.AddProductToStock(p, quantity);
             LoadStockListView();
-            int currentNotiCount = int.Parse(File.ReadAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt")) + 1;
-            File.WriteAllText(@"D:\Spring2022\PRN211\FinalProject\PRN211_PROJECT\PRN211_PROJECT\NotiCount.txt", currentNotiCount.ToString());
+            var config = new ConfigurationBuilder().AddJsonFile("AppConfig.json").Build();
+            string rootDir = config.GetSection("NotiCountPath").Value.ToString();
+            int currentNotiCount = int.Parse(File.ReadAllText(rootDir)) + 1;
+            File.WriteAllText(rootDir, currentNotiCount.ToString());
             AdminWindow main = Window.GetWindow(this) as AdminWindow;
             main.UpdateNoticount();
         }
